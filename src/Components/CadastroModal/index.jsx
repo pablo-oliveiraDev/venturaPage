@@ -9,6 +9,7 @@ export default function CadastroModal({ showCadastro }) {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const [cep, setCep] = useState('');
+    const [telefone, setTelefone] = useState('');
     const [rua, setRua] = useState('');
     const [cidade, setCidade] = useState('');
     const [uf, setUf] = useState('');
@@ -29,7 +30,7 @@ export default function CadastroModal({ showCadastro }) {
 
     const handleChange = (valueCep) => {
         setCep(valueCep);
-        setMostarEndereco('');
+        //setMostarEndereco('');
         setRua('');
         setCidade('');
         setUf('');
@@ -76,11 +77,13 @@ export default function CadastroModal({ showCadastro }) {
             </S.MyButton>
 
             <S.MyModal show={show} onHide={handleClose}>
-                <S.MyModal.Header closeButton className='Header'>
-                    <S.MyModal.Title className='Title'>NOVO CADASTRO</S.MyModal.Title>
+                <S.MyModal.Header className='Header'>
+                    <S.MyModal.Title className='Title'><IconsFc.FcReadingEbook size={28} /> NOVO CADASTRO</S.MyModal.Title>
                 </S.MyModal.Header>
                 <S.MyModal.Body className='Body'>
+
                     <div className='containerInput'>
+
                         <div className='containerSub'>
                             <label className='SubTitle'>DADOS PESSOAIS</label>
                         </div>
@@ -95,12 +98,18 @@ export default function CadastroModal({ showCadastro }) {
                                 type='text'
                                 name='telefone'
                                 mask='(99)99999-9999'
+                                value={telefone}
+                                onChange={(e) => setTelefone(e.target.value.replace(/\D/g, ''))}
                             />
+
+                        </label>
+                        {telefone.substring(2, 3) === '9' && (<label>POSSUI WHATSAPP
                             <input
                                 type='radio'
-                                name='telefona'
+                                name='telefone'
                             />
-                        </label>
+                        </label>)}
+                        {console.log(telefone.substring(2, 3))}
                         <label>CPF/CNPJ:
                             <IMaskInput
                                 type='text'
@@ -158,6 +167,7 @@ export default function CadastroModal({ showCadastro }) {
                                 <label className='SubTitle'>{msgError}</label>
                             </div>)}
                     </div>
+
                 </S.MyModal.Body>
                 <S.MyModal.Footer className='Footer'>
                     <S.MyButton variant="secondary" onClick={handleClose}>

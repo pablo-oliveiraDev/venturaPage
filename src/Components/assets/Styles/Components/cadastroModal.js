@@ -26,6 +26,13 @@ export const MyModal = styled(Modal)`
         background: #09fe;
         color:#fff;
     }
+   
+    .Title{
+        margin:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
     label{
         margin: 10px 0;
         font-weight:700;
