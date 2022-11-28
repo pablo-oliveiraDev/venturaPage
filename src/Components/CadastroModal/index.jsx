@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import * as IconsFc from 'react-icons/fc';
 import * as S from '../assets/Styles/Components/cadastroModal';
 import IMaskInput from 'react-input-mask';
 import { toast } from 'react-toastify';
@@ -24,7 +25,17 @@ export default function CadastroModal({ showCadastro }) {
         setUf('');
         setMeuBairro('');
         setMsgError('');
-    }
+    };
+
+    const handleChange = (valueCep) => {
+        setCep(valueCep);
+        setMostarEndereco('');
+        setRua('');
+        setCidade('');
+        setUf('');
+        setMeuBairro('');
+        setMsgError('');
+    };
 
     const loadCep = () => {
         if (cep.length === 9) {
@@ -86,8 +97,8 @@ export default function CadastroModal({ showCadastro }) {
                                 mask='(99)99999-9999'
                             />
                             <input
-                            type='radio'
-                            name='telefona'
+                                type='radio'
+                                name='telefona'
                             />
                         </label>
                         <label>CPF/CNPJ:
@@ -114,8 +125,8 @@ export default function CadastroModal({ showCadastro }) {
                                 mask='99999-999'
                                 placeholder='Digite o seu cep'
                                 value={cep}
-                                onChange={(e) => setCep(e.target.value)}
-                            /><button onClick={loadCep}>buscar</button>
+                                onChange={(e) => handleChange(e.target.value)}
+                            /><button onClick={loadCep}><IconsFc.FcSearch size={25} /></button>
                         </label>
                         {mostrarEndereco ? (<> <label>RUA:
                             <input

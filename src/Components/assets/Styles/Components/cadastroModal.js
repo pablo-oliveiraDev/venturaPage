@@ -23,7 +23,7 @@ export const MyModal = styled(Modal)`
     .Body,
     .Footer,
     .Header {
-        background:#00C;
+        background: #09fe;
         color:#fff;
     }
     label{
@@ -32,7 +32,8 @@ export const MyModal = styled(Modal)`
     
     }
     input{
-        font-size:20px
+        font-size:20px;
+        margin-left:1ch;
     }
 
     .Body{
