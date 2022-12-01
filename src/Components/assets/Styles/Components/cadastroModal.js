@@ -36,7 +36,10 @@ export const MyModal = styled(Modal)`
     label{
         margin: 10px 0;
         font-weight:700;
-    
+        border: 1.5px solid #fff;
+        padding-left:1ch;
+       
+        
     }
     input{
         font-size:20px;
