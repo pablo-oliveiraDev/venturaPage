@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from '../assets/Styles/Components/sideBar';
-import Cadastro from '../CadastroModal';
+import CadastroModal from '../CadastroModal';
 
 
 
@@ -33,7 +33,7 @@ export default function SideBAr() {
             <S.MyNav.Link eventKey='/' >Home</S.MyNav.Link>
             <S.MyNav.Link eventKey='/Dashboard' >Dashaboard</S.MyNav.Link>
             <S.MyNav.Link eventKey='/services' >Serviços</S.MyNav.Link>
-            <Cadastro value='4' onClick={() => setShowCadastro(true)} showCadastro={showCadastro} />
+            <CadastroModal  />
 
         </S.MyNav >
 

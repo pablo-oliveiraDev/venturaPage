@@ -18,10 +18,11 @@ export default function CadastroModal({ showCadastro }) {
     const [cep, setCep] = useState('');
     const [rua, setRua] = useState('');
     const [cidade, setCidade] = useState('');
+    const [numero, setNumero] = useState('');
     const [uf, setUf] = useState('');
     const [meuBairro, setMeuBairro] = useState('');
     const [mostrarEndereco, setMostarEndereco] = useState('');
-   
+
 
     const [msgError, setMsgError] = useState('');
     const { cadastro } = useContext(AuthContext);
@@ -36,13 +37,39 @@ export default function CadastroModal({ showCadastro }) {
         setMeuBairro('');
         setMsgError('');
     };
-    // const clickToSave = (e) => {
-    //     e.preventDefault();
-    //     if () {
+    const clickToSave = (e) => {
+        e.preventDefault();
+        if (nome !== '' &&
+            sobrenome !== '' &&
+            cpf !== '' &&
+            email !== '' &&
+            telefone !== '' &&
+            senha !== '' &&
+            cep !== '' &&
+            rua !== '' &&
+            cidade !== '' &&
+            uf !== '' &&
+            meuBairro !== '') {
+            cadastro(
+                nome,
+                sobrenome,
+                email,
+                cpf,
+                telefone,
+                senha,
+                rua,
+                numero,
+                cep,
+                cidade,
+                uf,
+                meuBairro
+            )
+        } else {
+            alert('Os Campos nao podem estar vazios!🙁');
+            return;
+        }
 
-    //     }
-
-    // }
+    }
     const handleChange = (valueCep) => {
         setCep(valueCep);
         setRua('');
@@ -53,7 +80,7 @@ export default function CadastroModal({ showCadastro }) {
     };
 
     const loadCep = () => {
-        if (cep.length === 9) {
+        if (cep.length >= 9) {
             fetch(`https://viacep.com.br/ws/${cep.replace(/\D/g, '')}/json`)
                 .then(res => res.json())
                 .then((data) => {
@@ -86,9 +113,9 @@ export default function CadastroModal({ showCadastro }) {
 
     return (
         <>
-            <S.MyButton variant='primary' onClick={handleShow} className='buttonShow'>
+            <S.ShowButton onClick={handleShow}>
                 Cadastro
-            </S.MyButton>
+            </S.ShowButton>
 
             <S.MyModal show={show} onHide={handleClose}>
                 <S.MyModal.Header className='Header'>
@@ -99,13 +126,15 @@ export default function CadastroModal({ showCadastro }) {
                     <div className='containerInput'>
 
                         <div className='containerSub'>
-                            <label className='SubTitle'>DADOS PESSOAIS</label>
+                            <h3 className='SubTitle'>DADOS PESSOAIS</h3>
                         </div>
                         <label>NOME:
                             <input
                                 type='text'
                                 name='nome'
                                 placeholder='Digite seu nome'
+                                value={nome}
+                                onChange={(e) => setNome(e.target.value)}
                             />
                         </label>
                         <label>SOBRENOME:
@@ -113,6 +142,8 @@ export default function CadastroModal({ showCadastro }) {
                                 type='text'
                                 name='sobrenome'
                                 placeholder='Digite seu sobrenome'
+                                value={sobrenome}
+                                onChange={(e) => setSobrenome(e.target.value)}
                             />
                         </label>
                         <label>TELEFONE:
@@ -130,6 +161,7 @@ export default function CadastroModal({ showCadastro }) {
                             <input
                                 type='radio'
                                 name='telefone'
+
                             />
                         </label>)}
                         {console.log(telefone.substring(2, 3))}
@@ -139,6 +171,8 @@ export default function CadastroModal({ showCadastro }) {
                                 name='cpf'
                                 mask='999.999.999-99'
                                 placeholder='Digite o seu cpf'
+                                value={cpf}
+                                onChange={(e) => setCPF(e.target.value)}
                             />
                         </label>
                         <label>EMAIL:
@@ -146,6 +180,8 @@ export default function CadastroModal({ showCadastro }) {
                                 type='text'
                                 name='email'
                                 placeholder='Digite seu melhor email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </label>
                         <label>SENHA:
@@ -153,10 +189,12 @@ export default function CadastroModal({ showCadastro }) {
                                 type='password'
                                 name='senha'
                                 placeholder='Digite aqui sua senha'
+                                value={senha}
+                                onChange={(e) => setsenha(e.target.value)}
                             />
                         </label>
                         <div className='containerSub'>
-                            <label className='SubTitle'>ENDEREÇO</label>
+                            <h3 className='SubTitle'>ENDEREÇO</h3>
                         </div>
                         <label>CEP:
                             <IMaskInput
@@ -200,18 +238,20 @@ export default function CadastroModal({ showCadastro }) {
                                     type='text'
                                     name='numero'
                                     placeholder='Numero da sua casa'
+                                    value={numero}
+                                    onChange={(e) => setNumero(e.target.value)}
                                 />
                             </label></>) : (<div className='containerSub'>
-                                <label className='SubTitle'>{msgError}</label>
+                                <h3 className='SubTitle'>{msgError}</h3>
                             </div>)}
                     </div>
 
                 </S.MyModal.Body>
                 <S.MyModal.Footer className='Footer'>
-                    <S.MyButton variant="secondary" onClick={handleClose}>
+                    <S.MyButton className='btn-fechar' variant="secondary" onClick={handleClose}>
                         Close
                     </S.MyButton>
-                    <S.MyButton variant="primary" onClick={handleClose}>
+                    <S.MyButton className='btn-save' variant="primary" onClick={clickToSave}>
                         Save Changes
                     </S.MyButton>
                 </S.MyModal.Footer>
