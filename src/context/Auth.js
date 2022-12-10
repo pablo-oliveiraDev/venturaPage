@@ -24,12 +24,13 @@ export const AuthProvider = ({ children }) => {
     //login users
     async function login(email, password) {
         setLoadingAuth(true);
-        await api.get(`/logged/name=${email}/password=${password}`)
+        await api.get(`logeed/?name=${email}&password=${password}`)
             .then((res) => {
+                console.log(res);
                 setUser(res);
-                storageUser(res);
+                storageUser(res.data);
                 setLoading(false);
-                toast.success('Bem vindo a Ventura Refrigeração!👍')
+                toast.success('Bem vindo a Ventura Refrigeração!👍');
 
             })
             .catch((error) => {

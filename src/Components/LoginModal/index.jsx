@@ -25,17 +25,13 @@ export default function LoginModal({ showCadastro }) {
 
 
     const [msgError, setMsgError] = useState('');
-    const { cadastro } = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
 
     const handleClose = () => {
         setMostarEndereco('');
         setShow(false);
-        setCep('');
-        setRua('');
-        setCidade('');
-        setUf('');
-        setMeuBairro('');
-        setMsgError('');
+        setEmail('');
+        setsenha('');
     };
     const clickToLogin = (e) => {
         e.preventDefault();
@@ -43,7 +39,7 @@ export default function LoginModal({ showCadastro }) {
             email !== '' &&
             senha !== ''
         ) {
-            cadastro(
+            login(
                 email,
                 senha
             )
