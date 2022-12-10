@@ -135,7 +135,7 @@ export default function CadastroModal({ showCadastro }) {
                                 placeholder='Digite o seu cep'
                                 value={cep}
                                 onChange={(e) => handleChange(e.target.value)}
-                            /><button onClick={loadCep}><IconsFc.FcSearch size={25} /></button>
+                            /><button onClick={loadCep}><IconsFc.FcRight size={25} /></button>
                         </label>
                         {mostrarEndereco ? (<> <label>RUA:
                             <input
