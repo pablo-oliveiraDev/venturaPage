@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from '../assets/Styles/Components/sideBar';
 import CadastroModal from '../CadastroModal';
+import LoginModal from '../LoginModal';
 
 
 
@@ -34,6 +35,7 @@ export default function SideBAr() {
             <S.MyNav.Link eventKey='/Dashboard' >Dashaboard</S.MyNav.Link>
             <S.MyNav.Link eventKey='/services' >Serviços</S.MyNav.Link>
             <CadastroModal  />
+            <LoginModal />
 
         </S.MyNav >
 
