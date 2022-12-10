@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loadingAuth, setLoadingAuth] = useState(false);
     const [loading, setLoading] = useState(true);
-  
+
     useEffect(() => {
         function loadingStorage() {
             const storageUser = localStorage.getItem('logedUsers');
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
         await api.post(`/logged/name=${email}/password=${password}`)
             .then((res) => {
                 setUser(res);
-                storageUser(user);
+                storageUser(res);
                 setLoading(false);
                 toast.success('Bem vindo a Ventura Refrigeração!👍')
 
@@ -45,25 +45,31 @@ export const AuthProvider = ({ children }) => {
         sobrenome,
         email,
         cpf,
+        telefone,
         password,
         rua,
         numero,
         cep,
         cidade,
-        data_cadastro) {
-        let data = {
+        uf,
+        bairro) {
+       
+        await api.post(`/users/`, {
             nome: nome,
             sobrenome: sobrenome,
             email: email,
             cpf: cpf,
+            telefone: telefone,
             password: password,
             rua: rua,
             numero: numero,
             cep: cep,
             cidade: cidade,
+            uf: uf,
+            bairro: bairro,
             data_cadastro: new Date()
-        }
-        await api.post(`/users/${data}`)
+           
+        })
             .then(() => {
                 toast.success('Cadastro ralizado com sucesso!\nSeja bem vindo!😃');
                 setLoading(false);
@@ -75,17 +81,17 @@ export const AuthProvider = ({ children }) => {
 
     };
 
-    function storageUser(data){
+    function storageUser(data) {
         localStorage.setItem('logrdUsers', JSON.stringify(data));
     };
 
-    async function logOut(){
+    async function logOut() {
         localStorage.removeItem('logedUsers');
         setUser(null);
     };
-    return(
+    return (
         <AuthContext.Provider value={{
-            signed:!!user,
+            signed: !!user,
             loading,
             user,
             login,

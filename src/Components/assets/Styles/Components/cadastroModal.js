@@ -2,22 +2,57 @@ import styled from 'styled-components';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+
 export const MyButton = styled(Button)`
-      font-weight:700;
+     .btn-save,
+     .btn-close{
+        font-weight:700;
         color:#00ff;
+        width:150px;
         margin: 20px 0;
+     }
+     
+   .cadastro{
+    
+        width:250px;
+        text-decoration:none;
+        list-style:none;
+        text-align:center;
+        margin: 20px 0;
+        
         :hover{
         color:#fff;
         background:#00ff;
-        width:100%;
-        text-align:center;
-    } 
-    .buttonShow {
-        font-size:800;
-        color:#fff;
     }
+   }
 
 `;
+export const ShowButton = styled.button`
+        width:230px;
+        text-decoration:none;
+        list-style:none;
+        text-align:left;
+        margin: 10px 0;
+        border:none;
+        color: #0d6efd;
+        padding:0 15px;
+        font-size:23px;
+        font-weight:700;
+        background:none;
+        transition: color .15s
+        ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out;
+
+        :hover{
+            color:#0a58ca;
+            
+        }
+        
+      
+
+`;
+
 export const MyModal = styled(Modal)`
     .Title,
     .Body,
@@ -25,6 +60,17 @@ export const MyModal = styled(Modal)`
     .Header {
         background: #09fe;
         color:#fff;
+        
+             
+    }
+    .Body,
+    .Footer,
+    .Header {
+        background-image: url(flocoDeNeve.png);
+        background-size:80px;
+        background-repeat:no-repeat;
+        background-position:right center;
+
     }
    
     .Title{
@@ -36,7 +82,10 @@ export const MyModal = styled(Modal)`
     label{
         margin: 10px 0;
         font-weight:700;
-    
+        border: 1.5px solid #fff;
+        padding-left:1ch;
+       
+        
     }
     input{
         font-size:20px;
@@ -49,12 +98,13 @@ export const MyModal = styled(Modal)`
         justify-content:center;
        
     }
-    label .subTitle{
-        
+    h3 .subTitle{
+        font-weight:700;        
         text-align:center;
+        font-size:20px;
     }
     .containerSub{
-        width: 250px;
+        width: 100%;
         display: flex;
         flex-direction:row;
         align-items:center;
