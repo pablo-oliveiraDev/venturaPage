@@ -24,12 +24,19 @@ export const AuthProvider = ({ children }) => {
     //login users
     async function login(email, password) {
         setLoadingAuth(true);
-        await api.post(`/logged/name=${email}/password=${password}`)
+        await api.get(`/logeed?user=${email}&?password=${password}`)
             .then((res) => {
-                setUser(res);
-                storageUser(res);
-                setLoading(false);
-                toast.success('Bem vindo a Ventura Refrigeração!👍')
+                if (res.data.length !== 0) {
+                    
+                    setUser(res.data);
+                    storageUser(res.data);
+                    setLoading(false);
+                    toast.success('Bem vindo a Ventura Refrigeração!👍');
+                } else {
+                    toast.error('Email ou senha incorretos tente novamente');
+                    return;
+                }
+
 
             })
             .catch((error) => {
@@ -53,14 +60,14 @@ export const AuthProvider = ({ children }) => {
         cidade,
         uf,
         bairro) {
-       
+
         await api.post(`/users/`, {
             nome: nome,
             sobrenome: sobrenome,
             email: email,
             cpf: cpf,
             telefone: telefone,
-            password: password,
+            senha: password,
             rua: rua,
             numero: numero,
             cep: cep,
@@ -68,7 +75,7 @@ export const AuthProvider = ({ children }) => {
             uf: uf,
             bairro: bairro,
             data_cadastro: new Date()
-           
+
         })
             .then(() => {
                 toast.success('Cadastro ralizado com sucesso!\nSeja bem vindo!😃');
@@ -82,7 +89,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     function storageUser(data) {
-        localStorage.setItem('logrdUsers', JSON.stringify(data));
+        localStorage.setItem('logedUsers', JSON.stringify(data));
     };
 
     async function logOut() {
