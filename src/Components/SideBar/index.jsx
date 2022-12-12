@@ -34,7 +34,7 @@ export default function SideBAr() {
             <S.MyNav.Link eventKey='/Dashboard' >Dashaboard</S.MyNav.Link>
             <S.MyNav.Link eventKey='/services' >Serviços</S.MyNav.Link>
             <CadastroModal  />
-            <LoginModal />
+            <LoginModal tituloButton={'Login'} />
 
         </S.MyNav >
 

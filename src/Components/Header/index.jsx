@@ -6,16 +6,17 @@ import { AuthContext } from '../../context/Auth';
 
 
 export default function Header() {
-    const {signed, user, logOut } = useContext(AuthContext);
-    //const signed = true;
-    console.log(user)
+    const { signed, user, logOut } = useContext(AuthContext);
+    const nome = user ? user.nome : 'DESLOGADO';
+
+
     return (
         <>
             <S.MyNavbar bg="primary" variant="dark">
                 <S.MyContainer>
                     <S.MyNavbar.Brand className='brand'>Ventura Refrigeração</S.MyNavbar.Brand>
                     <div >
-                        <span onClick={() => alert('clicou')}>Bem Vindo:<br /> {user ? user[0].nome : 'DESLOGADO'}
+                        <span onClick={() => alert('clicou')}>Bem Vindo:<br /><span className='spanNome' status={signed}>{nome}</span>
                             <IconsFA.FaRegUserCircle color={signed ? '#06b133' : '#F00'} size={25} className='iconUser' />
                         </span>
                         {signed && (<button onClick={logOut}>

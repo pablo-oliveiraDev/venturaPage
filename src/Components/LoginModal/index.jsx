@@ -5,12 +5,12 @@ import * as S from '../assets/Styles/Components/cadastroModal';
 import { AuthContext } from '../../context/Auth';
 
 
-export default function LoginModal({ showCadastro }) {
+export default function LoginModal({ showCadastro,tituloButton }) {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
-    const { login } = useContext(AuthContext);
+    const { login} = useContext(AuthContext);
 
     const handleClose = () => {
         setShow(false);
@@ -19,6 +19,7 @@ export default function LoginModal({ showCadastro }) {
     };
     const clickToLogin = (e) => {
         e.preventDefault();
+        
         if (
             email !== '' &&
             senha !== ''
@@ -40,7 +41,7 @@ export default function LoginModal({ showCadastro }) {
     return (
         <>
             <S.ShowButton onClick={handleShow}>
-                Login
+                {tituloButton}
             </S.ShowButton>
 
             <S.MyModal show={show} onHide={handleClose}>

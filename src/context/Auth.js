@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [loadingAuth, setLoadingAuth] = useState(false);
     const [loading, setLoading] = useState(true);
 
+
     useEffect(() => {
         function loadingStorage() {
             const storageUser = localStorage.getItem('logedUsers');
@@ -26,16 +27,32 @@ export const AuthProvider = ({ children }) => {
         setLoadingAuth(true);
         await api.get(`/logeed?user=${email}&?password=${password}`)
             .then((res) => {
-                if (res.data.length !== 0) {
-                    
-                    setUser(res.data);
-                    storageUser(res.data);
+                let dataUser = {
+                    id:res.data[0].id,
+                    nome: res.data[0].nome,
+                    sobrenome: res.data[0].sobrenome,
+                    email:res.data[0].email,
+                    cpf: res.data[0].cpf,
+                    telefone: res.data[0].telefone,
+                    senha: res.data[0].senha,
+                    rua: res.data[0].rua,
+                    numero: res.data[0].numero,
+                    cep: res.data[0].cep,
+                    cidade: res.data[0].cidade,
+                    uf: res.data[0].uf,
+                    bairro: res.data[0].bairro,
+                    data_cadastro: res.data[0].data_cadastro,
+
+                };
+                if (dataUser) {
+                    setUser(dataUser);
+                    storageUser(dataUser);
                     setLoading(false);
                     toast.success('Bem vindo a Ventura Refrigeração!👍');
                 } else {
                     toast.error('Email ou senha incorretos tente novamente');
                     return;
-                }
+                };
 
 
             })
@@ -95,6 +112,7 @@ export const AuthProvider = ({ children }) => {
     async function logOut() {
         localStorage.removeItem('logedUsers');
         setUser(null);
+        toast.info('Logout efetuado com sucesso!🙁');
     };
     return (
         <AuthContext.Provider value={{

@@ -64,6 +64,7 @@ export default function CadastroModal({ showCadastro }) {
                 uf,
                 meuBairro
             )
+            handleClose();
         } else {
             alert('Os Campos nao podem estar vazios!🙁');
             return;
@@ -91,6 +92,7 @@ export default function CadastroModal({ showCadastro }) {
                         setCidade(data.localidade);
                         setUf(data.uf);
                         setMeuBairro(data.bairro);
+                        
                     } else {
                         setRua('');
                         setCidade('');

@@ -26,4 +26,9 @@ export const MyNavbar = styled(Navbar)`
       margin-left :1ch;
       margin-right :4ch;
     }
+
+    span .spanNome{
+      font-weight:800;
+      color:${props => props.status ? '#06b133' : '#fff'};
+    }
 `;
