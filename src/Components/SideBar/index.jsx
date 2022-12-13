@@ -10,6 +10,7 @@ import LoginModal from '../LoginModal';
 export default function SideBAr() {
     const [effectMenu, setEffectMenu] = useState('');
     const history = useNavigate();
+    const [myMenu,setMyMenu] = useState(false);
 
     const handleClickMenu = async(eventKey) => {
          setEffectMenu(eventKey);
@@ -28,13 +29,18 @@ export default function SideBAr() {
         <S.MyNav variant='pills' className="flex-column" onSelect={handleClickMenu} effect={effectMenu} >
 
             <S.MyNav.Link eventKey="disabled" disabled  >
-                Menu
+                MENU
             </S.MyNav.Link>
-            <S.MyNav.Link eventKey='/' >Home</S.MyNav.Link>
-            <S.MyNav.Link eventKey='/Dashboard' >Dashaboard</S.MyNav.Link>
-            <S.MyNav.Link eventKey='/services' >Serviços</S.MyNav.Link>
-            <CadastroModal  />
-            <LoginModal tituloButton={'Login'} />
+            <S.MyNav.Link eventKey='/' >HOME</S.MyNav.Link>
+            <S.MyNav.Link eventKey='/Dashboard' >DASHBOARD</S.MyNav.Link>
+            <S.MyNav.Link eventKey='/services' onClick={()=>setMyMenu(!myMenu)} >SERVIÇOS</S.MyNav.Link>
+            {myMenu && <>
+                <S.MyNav.Link eventKey='/agendar' >AGENDAR NOVO</S.MyNav.Link>
+                <S.MyNav.Link eventKey='/agendados' >AGENDADOS/REALIZADOS</S.MyNav.Link>
+                </>
+            }
+            <CadastroModal tituloButton={'CADASTRO'} />
+            <LoginModal tituloButton={'LOGIN'} />
 
         </S.MyNav >
 

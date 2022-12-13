@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     //login users
     async function login(email, password) {
         setLoadingAuth(true);
-        await api.get(`/logeed?user=${email}&?password=${password}`)
+        await api.get(`/logeed?user=${email}&&?password=${password}`)
             .then((res) => {
                 let dataUser = {
                     id:res.data[0].id,

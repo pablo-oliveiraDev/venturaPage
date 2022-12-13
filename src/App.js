@@ -19,14 +19,12 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <>
-          <Header />
-          <StatusBar />
-          <ToastContainer autoClose={3500} theme='colored' />
-          <MainRoutes />
-          <Footer />
-          <GlobalStyle />
-        </>
+        <Header />
+        <StatusBar />
+        <ToastContainer autoClose={3500} theme='colored' />
+        <MainRoutes />
+        <Footer />
+        <GlobalStyle />
       </Router>
     </AuthProvider>
   );

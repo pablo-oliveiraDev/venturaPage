@@ -6,7 +6,7 @@ import IMaskInput from 'react-input-mask';
 import { AuthContext } from '../../context/Auth';
 
 
-export default function CadastroModal({ showCadastro }) {
+export default function CadastroModal({ showCadastro,tituloButton }) {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const [nome, setNome] = useState('');
@@ -116,7 +116,7 @@ export default function CadastroModal({ showCadastro }) {
     return (
         <>
             <S.ShowButton onClick={handleShow}>
-                Cadastro
+                {tituloButton}
             </S.ShowButton>
 
             <S.MyModal show={show} onHide={handleClose}>

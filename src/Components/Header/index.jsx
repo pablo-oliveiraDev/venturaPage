@@ -8,6 +8,7 @@ import { AuthContext } from '../../context/Auth';
 export default function Header() {
     const { signed, user, logOut } = useContext(AuthContext);
     const nome = user ? user.nome : 'DESLOGADO';
+    
 
 
     return (
