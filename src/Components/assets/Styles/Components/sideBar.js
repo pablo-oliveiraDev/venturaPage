@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom';
 
 export const MyNav = styled(Nav)`
    height:800px;
-    margin:0 ;
+    margin: 0 ;
     padding:0;
     font-weight:800;
     font-size:20px;
-   
+  .textMenu{
+    margin-top:30px;
+    margin-bottom:40px;
+  };
    
 `;
 
@@ -19,16 +22,15 @@ export const MyLink = styled(Link)`
         text-decoration:none;
         list-style:none;
         text-align:center;
-        margin: 20px 0;
-        
+        margin: 20px 0;       
         :hover{
         color:#fff;
         background:#00ff;
-    } 
+    }; 
 
  a{
       
-       
+ 
        
     }
 
@@ -40,9 +42,8 @@ span{
         font-size:20px;
         color:#fff;
         background:#00ff;
-    }  }
-   
-
+    }  
+};
 
 `;
 

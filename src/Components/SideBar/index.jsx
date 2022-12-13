@@ -10,39 +10,33 @@ import LoginModal from '../LoginModal';
 export default function SideBAr() {
     const [effectMenu, setEffectMenu] = useState('');
     const history = useNavigate();
-    const [myMenu,setMyMenu] = useState(false);
+    const [myMenu, setMyMenu] = useState(false);
 
-    const handleClickMenu = async(eventKey) => {
-         setEffectMenu(eventKey);
-      
-     await effectMenu !== '' && history(eventKey);
-       
+    const handleClickMenu = async (eventKey) => {
+        setEffectMenu(eventKey);
 
-       
+        await effectMenu !== '' && history(eventKey);
     };
-       
-    console.log(effectMenu);
 
-
+    
     return (
-
         <S.MyNav variant='pills' className="flex-column" onSelect={handleClickMenu} effect={effectMenu} >
 
-            <S.MyNav.Link eventKey="disabled" disabled  >
+            <S.MyNav.Link eventKey="disabled" disabled className='textMenu'  >
                 MENU
             </S.MyNav.Link>
-            <S.MyNav.Link eventKey='/' >HOME</S.MyNav.Link>
-            <S.MyNav.Link eventKey='/Dashboard' >DASHBOARD</S.MyNav.Link>
-            <S.MyNav.Link eventKey='/services' onClick={()=>setMyMenu(!myMenu)} >SERVIÇOS</S.MyNav.Link>
-            {myMenu && <>
-                <S.MyNav.Link eventKey='/agendar' >AGENDAR NOVO</S.MyNav.Link>
-                <S.MyNav.Link eventKey='/agendados' >AGENDADOS/REALIZADOS</S.MyNav.Link>
+            <S.MyNav.Link eventKey='/' className='btn-menu' >HOME</S.MyNav.Link>
+            <S.MyNav.Link eventKey='/Dashboard' className='btn-menu'>DASHBOARD</S.MyNav.Link>
+            <S.MyNav.Link eventKey='/services' className='btn-menu' onClick={() => setMyMenu(!myMenu)} >SERVIÇOS</S.MyNav.Link>
+            {myMenu &&
+                <>
+                    <S.MyNav.Link eventKey='/agendar' className='btn-menu' >AGENDAR NOVO</S.MyNav.Link>
+                    <S.MyNav.Link eventKey='/agendados' className='btn-menu' >AGENDADOS/REALIZADOS</S.MyNav.Link>
                 </>
             }
             <CadastroModal tituloButton={'CADASTRO'} />
             <LoginModal tituloButton={'LOGIN'} />
 
         </S.MyNav >
-
     );
 }
