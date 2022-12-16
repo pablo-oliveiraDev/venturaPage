@@ -163,7 +163,6 @@ export default function CadastroModal({ showCadastro,tituloButton }) {
                             <input
                                 type='radio'
                                 name='telefone'
-
                             />
                         </label>)}
                         {console.log(telefone.substring(2, 3))}
