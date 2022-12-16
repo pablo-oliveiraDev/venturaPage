@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
 import * as IconsFc from 'react-icons/fc';
-import * as S from '../assets/Styles/Components/cadastroModal';
+import * as S from '../../Components/assets/Styles/Components/cadastroModal';
 import { AuthContext } from '../../context/Auth';
 import { toast } from 'react-toastify';
 
 
-export default function LoginModal({ showCadastro,tituloButton }) {
+export default function LoginModal({ showCadastro,tituloButton,logUser }) {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
-    const { login,signed} = useContext(AuthContext);
+    const { signed} = useContext(AuthContext);
 
     const handleClose = () => {
         setShow(false);
@@ -28,7 +28,7 @@ export default function LoginModal({ showCadastro,tituloButton }) {
             email !== '' &&
             senha !== ''
         ) {
-            login(
+            logUser(
                 email,
                 senha
             )

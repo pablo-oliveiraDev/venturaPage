@@ -10,28 +10,29 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
 
+
     useEffect(() => {
         function loadingStorage() {
             const storageUser = localStorage.getItem('logedUsers');
-            if (storageUser) {
+           
                 setUser(JSON.stringify(storageUser));
                 setLoading(false);
-            }
-            setLoading(false);
+            
+          
         }
         loadingStorage();
 
-    }, []);
+    }, [storageUser]);
     //login users
     async function login(email, password) {
         setLoadingAuth(true);
         await api.get(`/logeed?user=${email}&&?password=${password}`)
             .then((res) => {
                 let dataUser = {
-                    id:res.data[0].id,
+                    id: res.data[0].id,
                     nome: res.data[0].nome,
                     sobrenome: res.data[0].sobrenome,
-                    email:res.data[0].email,
+                    email: res.data[0].email,
                     cpf: res.data[0].cpf,
                     telefone: res.data[0].telefone,
                     senha: res.data[0].senha,

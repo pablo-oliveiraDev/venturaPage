@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/Auth';
 export default function Header() {
     const { signed, user, logOut } = useContext(AuthContext);
     const nome = user ? user.nome : 'DESLOGADO';
-    
+    //console.log(user.nome);
 
 
     return (
@@ -17,7 +17,7 @@ export default function Header() {
                 <S.MyContainer>
                     <S.MyNavbar.Brand className='brand'>Ventura Refrigeração</S.MyNavbar.Brand>
                     <div >
-                        <span onClick={() => alert('clicou')}>Bem Vindo:<br /><span className='spanNome' status={signed}>{nome}</span>
+                        <span onClick={() => alert('clicou')}>Bem Vindo:<br /><span className='spanNome' status={signed.toString()}>{`${nome}`}</span>
                             <IconsFA.FaRegUserCircle color={signed ? '#06b133' : '#F00'} size={25} className='iconUser' />
                         </span>
                         {signed && (<button onClick={logOut}>

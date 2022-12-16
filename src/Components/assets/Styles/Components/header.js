@@ -29,6 +29,6 @@ export const MyNavbar = styled(Navbar)`
 
     span .spanNome{
       font-weight:800;
-      color:${props => props.status ? '#06b133' : '#fff'};
+      color:#fff;
     }
 `;

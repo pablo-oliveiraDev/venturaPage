@@ -1,16 +1,19 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from '../assets/Styles/Components/sideBar';
 import CadastroModal from '../CadastroModal';
 import LoginModal from '../LoginModal';
-
+import TesteLogin from '../../Pages/LoginModal';
+import { AuthContext } from '../../context/Auth';
 
 
 export default function SideBAr() {
     const [effectMenu, setEffectMenu] = useState('');
     const history = useNavigate();
     const [myMenu, setMyMenu] = useState(false);
+    const { login,signed,user} = useContext(AuthContext);
+    
 
     const handleClickMenu = async (eventKey) => {
         setEffectMenu(eventKey);
@@ -36,6 +39,7 @@ export default function SideBAr() {
             }
             <CadastroModal tituloButton={'CADASTRO'} />
             <LoginModal tituloButton={'LOGIN'} />
+            <TesteLogin tituloButton={'testeloginInpage'} logUser={user} />
 
         </S.MyNav >
     );
