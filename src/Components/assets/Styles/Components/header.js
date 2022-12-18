@@ -17,6 +17,8 @@ export const MyContainer = styled(Container)`
       color:none;
       background:none;
       border:none;
+   
+      
     }
 `;
 export const MyNav = styled(Nav)``;
@@ -26,9 +28,17 @@ export const MyNavbar = styled(Navbar)`
       margin-left :1ch;
       margin-right :4ch;
     }
-
+    span{
+     
+    }
     span .spanNome{
-      font-weight:800;
-      color:#fff;
+      
+      font-weight:500;
+      font-size:18px;
+      color:#fff;      
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      justify-content:center;
     }
 `;

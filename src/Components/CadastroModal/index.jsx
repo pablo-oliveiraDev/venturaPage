@@ -165,7 +165,7 @@ export default function CadastroModal({ showCadastro,tituloButton }) {
                                 name='telefone'
                             />
                         </label>)}
-                        {console.log(telefone.substring(2, 3))}
+                        
                         <label>CPF/CNPJ:
                             <IMaskInput
                                 type='text'

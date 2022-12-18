@@ -55,6 +55,7 @@ export const ShowButton = styled.button`
 `;
 
 export const MyModal = styled(Modal)`
+    margin-top:200px;
     .Title,
     .Body,
     .Footer,

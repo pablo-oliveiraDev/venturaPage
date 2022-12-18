@@ -14,16 +14,17 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         function loadingStorage() {
             const storageUser = localStorage.getItem('logedUsers');
-            if (user === null) {
-                setUser(JSON.stringify(storageUser));
+            if (storageUser) {
+                setUser(JSON.parse(storageUser));
                 setLoading(false);
-            }
+            };
             setLoading(false);
-        }
+        };
         loadingStorage();
 
     }, []);
-    //login users
+    //login users 
+    
     async function login(email, password) {
         setLoadingAuth(true);
         await api.get(`/logeed?user=${email}&&?password=${password}`)
@@ -46,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
                 };
                 if (dataUser) {
-                    setUser(dataUser)
+                    setUser(dataUser);
                     storageUser(dataUser);
                     setLoading(false);
                     toast.success('Bem vindo a Ventura Refrigeração!👍');
@@ -112,7 +113,7 @@ export const AuthProvider = ({ children }) => {
 
     async function logOut() {
         localStorage.removeItem('logedUsers');
-        setUser(null);
+        setUser('');
         toast.info('Logout efetuado com sucesso!🙁');
     };
     return (

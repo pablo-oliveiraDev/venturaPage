@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
 import * as IconsFc from 'react-icons/fc';
-import * as S from '../assets/Styles/Components/cadastroModal';
+import * as S from '../assets/Styles/Components/loginModal';
 import { AuthContext } from '../../context/Auth';
 import { toast } from 'react-toastify';
 

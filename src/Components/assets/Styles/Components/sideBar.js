@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 
 export const MyNav = styled(Nav)`
+ background-color: rgba(4,4,4,0.1) ;
+ 
    height:800px;
     margin: 0 ;
     padding:0;

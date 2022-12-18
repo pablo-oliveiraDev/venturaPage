@@ -7,7 +7,7 @@ import Header from './Components/Header';
 import MainRoutes from './Routes/routes';
 import Footer from './Components/Footer';
 import StatusBar from './Components/StatusBar';
-import GlobalStyle from './Components/assets/Styles/GlobalStyles';
+import GlobalStyle from './Components/assets/Styles/Pages/GlobalStyles';
 import AuthProvider from './context/Auth';
 
 
