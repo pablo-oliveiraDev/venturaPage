@@ -39,7 +39,7 @@ export const ShowButton = styled.button`
         padding:0 15px;
         font-size:23px;
         font-weight:700;
-        background:none;
+        background:${props => props.statusClick ? '#09fe' : 'none'};
         transition: color .15s
         ease-in-out,
         background-color .15s ease-in-out,
@@ -47,7 +47,7 @@ export const ShowButton = styled.button`
 
         :hover{
             color:#0a58ca;
-            
+            background: #09fe;
         }
         
       

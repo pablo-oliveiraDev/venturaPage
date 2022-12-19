@@ -12,11 +12,12 @@ export const MyNav = styled(Nav)`
     padding:0;
     font-weight:800;
     font-size:20px;
+    border:solid 2px #09fe;
   .textMenu{
     margin-top:30px;
     margin-bottom:40px;
   };
-   
+  
 `;
 
 export const MyLink = styled(Link)`
@@ -27,12 +28,12 @@ export const MyLink = styled(Link)`
         margin: 20px 0;       
         :hover{
         color:#fff;
-        background:#00ff;
+        background:#09fe;
     }; 
 
  a{
       
- 
+  
        
     }
 

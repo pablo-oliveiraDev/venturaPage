@@ -7,7 +7,7 @@ import * as S from '../../Components/assets/Styles/Pages/home'
 export default function Home() {
   return (
     <Layout>
-      <h1>home </h1>
+      <h1>É uma Honra atende-los com honestidade e dignidade! </h1>
       <S.MyContainer>
         <S.MyCarousel>
           <S.MyCarousel.Item>

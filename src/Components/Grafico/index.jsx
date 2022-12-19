@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as S from '../assets/Styles/Components/grafico';
 import {
     LineChart,
     Line,
@@ -13,29 +14,37 @@ import {
 } from 'recharts';
 
 const data = [
-    { name: 'Jan', pv: 2400, amt: 2400 },
-    { name: 'Page B', pv: 1398, amt: 2210 },
-    { name: 'Page C', pv: 9800, amt: 2290 },
-    { name: 'Page D', pv: 3908, amt: 2000 },
-    { name: 'Page E', pv: 4800, amt: 2181 },
-    { name: 'Page F', pv: 3800, amt: 2500 },
-    { name: 'Page G', pv: 4300, amt: 2100 },
+    { name: 'JAN', CONCLUIDO: 2400, ANDAMENTO: 2400 },
+    { name: 'FEV', CONCLUIDO: 1398, ANDAMENTO: 2210 },
+    { name: 'MAR', CONCLUIDO: 9800, ANDAMENTO: 2290 },
+    { name: 'ABR', CONCLUIDO: 3908, ANDAMENTO: 2000 },
+    { name: 'MAI', CONCLUIDO: 4800, ANDAMENTO: 2181 },
+    { name: 'JUN', CONCLUIDO: 3800, ANDAMENTO: 2500 },
+    { name: 'JUL', CONCLUIDO: 4300, ANDAMENTO: 2100 },
+    { name: 'AGO', CONCLUIDO: 4300, ANDAMENTO: 2100 },
+    { name: 'SET', CONCLUIDO: 4300, ANDAMENTO: 2100 },
+    { name: 'OUT', CONCLUIDO: 4300, ANDAMENTO: 2100 },
+    { name: 'NOV', CONCLUIDO: 4300, ANDAMENTO: 2100 },
+    { name: 'DEZ', CONCLUIDO: 4300, ANDAMENTO: 2100 },
 ];
 
 class SimpleLineChart extends Component {
 
     render() {
         return (
-            <ComposedChart width={730} height={250} data={data}>
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <CartesianGrid stroke="#f5f5f5" />
-                <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
-                <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-                <Line type="monotone" dataKey="uv" stroke="#ff7300" />
-            </ComposedChart>
+            <S.DivGrafico>
+                <h1 style={{margin:'20px'}}>Serviços</h1>
+                <ComposedChart width={730} height={250} data={data}>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <CartesianGrid stroke="#f5f5f5" />
+                    <Area type="monotone" dataKey="CONCLUIDO" fill="#8884d8" stroke="#8884d8" />
+                    <Bar dataKey="CONCLUIDO" barSize={20} fill="#413ea0" />
+                    <Line type="monotone" dataKey="ANDAMENTO" stroke="#ff7300" />
+                </ComposedChart>
+            </S.DivGrafico>
         );
     }
 }
