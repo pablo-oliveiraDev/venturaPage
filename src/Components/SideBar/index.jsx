@@ -1,38 +1,53 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import * as S from '../assets/Styles/Components/sideBar2';
+import CadastroModal from '../CadastroModal';
+import LoginModal from '../LoginModal';
+import * as IconsMenu from 'react-icons/tb';
 
 
 const sidebarNavItems = [
     {
-        display: 'HOME',
-        icon: <i className='bx bx-home'></i>,
+        display: 'Home',
+        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20}/></i>,
         to: '/',
         section: ''
     },
     {
-        display: 'DASHBOARD',
-        icon: <i className='bx bx-star'></i>,
+        display: 'Dashboard',
+        icon: <i className='bx bx-star'><IconsMenu.TbLayoutDashboard size={20} /></i>,
         to: '/Dashboard',
         section: 'Dashboard'
     },
     {
-        display: 'Calendar',
-        icon: <i className='bx bx-calendar'></i>,
-        to: '/calendar',
-        section: 'calendar'
+        display: 'Serviços',
+        icon: <i className='bx bx-calendar'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        to: '/services',
+        section: 'services'
     },
     {
         display: 'User',
-        icon: <i className='bx bx-user'></i>,
+        icon: <i className='bx bx-user'><IconsMenu.TbLayoutDashboard size={20} /></i>,
         to: '/user',
         section: 'user'
     },
     {
         display: 'Orders',
-        icon: <i className='bx bx-receipt'></i>,
+        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
         to: '/order',
         section: 'order'
+    },
+    {
+        display: <CadastroModal as={Link} tituloButton={'Cadastro'} />,
+        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        to: 'cadastro',
+        section: 'cadastro'
+    },
+    {
+        display: <LoginModal tituloButton={'Login'} />,
+        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        to: 'cadastro',
+        section: 'cadastro'
     },
 ]
 
@@ -84,8 +99,10 @@ const Sidebar = () => {
                             </div>
                         </Link>
                     ))
-                }
+                }      
+                
             </div>
+            
         </S.MySideMenu>
     )
 };

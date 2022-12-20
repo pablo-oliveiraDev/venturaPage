@@ -29,26 +29,26 @@ export const MyButton = styled(Button)`
 
 `;
 export const ShowButton = styled.button`
-        width:230px;
+        /* width:230px;
         text-decoration:none;
-        list-style:none;
-        text-align:left;
-        margin: 10px 0;
+        list-style:none; */
+        /* text-align:left;
+        margin: 10px 0; */
         border:none;
-        color: #0d6efd;
+        /* color: #0d6efd;
         padding:0 15px;
         font-size:23px;
-        font-weight:700;
+        font-weight:700; */
         background:none;
-        transition: color .15s
+        /* transition: color .15s
         ease-in-out,
         background-color .15s ease-in-out,
-        border-color .15s ease-in-out;
+        border-color .15s ease-in-out; */
 
-        :hover{
+        /* :hover{
             color:#0a58ca;
             
-        }
+        } */
         
       
 

@@ -7,7 +7,6 @@ import Grafico from '../../Components/Grafico';
 export default function Dashboard() {
   return (
     <Layout>
-
       <Grafico/>
     </Layout>
   );
