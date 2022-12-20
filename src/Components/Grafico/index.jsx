@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as S from '../assets/Styles/Components/grafico';
 import {
-    LineChart,
     Line,
     XAxis,
     YAxis,
@@ -28,25 +27,26 @@ const data = [
     { name: 'DEZ', CONCLUIDO: 4300, ANDAMENTO: 2100 },
 ];
 
-class SimpleLineChart extends Component {
+const ComposeGraphics = () => {
 
-    render() {
-        return (
-            <S.DivGrafico>
-                <h1 style={{margin:'20px'}}>Serviços</h1>
-                <ComposedChart width={730} height={250} data={data}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <CartesianGrid stroke="#f5f5f5" />
-                    <Area type="monotone" dataKey="CONCLUIDO" fill="#8884d8" stroke="#8884d8" />
-                    <Bar dataKey="CONCLUIDO" barSize={20} fill="#413ea0" />
-                    <Line type="monotone" dataKey="ANDAMENTO" stroke="#ff7300" />
-                </ComposedChart>
-            </S.DivGrafico>
-        );
-    }
+
+    return (
+        <S.DivGrafico>
+
+            <h1 style={{ margin: '20px' }}>Serviços</h1>
+            <ComposedChart width={730} height={250} data={data}>
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <CartesianGrid stroke="#f5f5f5" />
+                <Area type="monotone" dataKey="CONCLUIDO" fill="#8884d8" stroke="#8884d8" />
+                <Bar dataKey="CONCLUIDO" barSize={20} fill="#413ea0" />
+                <Line type="monotone" dataKey="ANDAMENTO" stroke="#ff7300" />
+            </ComposedChart>
+        </S.DivGrafico>
+    );
 }
 
-export default SimpleLineChart;
+
+export default ComposeGraphics;

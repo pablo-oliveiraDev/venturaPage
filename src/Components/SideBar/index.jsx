@@ -1,50 +1,93 @@
-import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-import * as S from '../assets/Styles/Components/sideBar';
-import CadastroModal from '../CadastroModal';
-import LoginModal from '../LoginModal';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import * as S from '../assets/Styles/Components/sideBar2';
 
 
-const SideBAr = () => {
-    const [effectMenu, setEffectMenu] = React.useState('');
-    const history = useNavigate();
-    const [myMenu, setMyMenu] = React.useState(false);
-    const [eventKeyClick, setEventKeyClick] = React.useState('');
+const sidebarNavItems = [
+    {
+        display: 'HOME',
+        icon: <i className='bx bx-home'></i>,
+        to: '/',
+        section: ''
+    },
+    {
+        display: 'DASHBOARD',
+        icon: <i className='bx bx-star'></i>,
+        to: '/Dashboard',
+        section: 'Dashboard'
+    },
+    {
+        display: 'Calendar',
+        icon: <i className='bx bx-calendar'></i>,
+        to: '/calendar',
+        section: 'calendar'
+    },
+    {
+        display: 'User',
+        icon: <i className='bx bx-user'></i>,
+        to: '/user',
+        section: 'user'
+    },
+    {
+        display: 'Orders',
+        icon: <i className='bx bx-receipt'></i>,
+        to: '/order',
+        section: 'order'
+    },
+]
 
+const Sidebar = () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [stepHeight, setStepHeight] = useState(0);
+    const sidebarRef = useRef();
+    const indicatorRef = useRef();
+    const location = useLocation();
 
-    const handleClickMenu = (eventKey) => {
-        if (eventKey !== '') {
-            setEventKeyClick(eventKey);
+    useEffect(() => {
+        setTimeout(() => {
+            const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
+            indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
+            setStepHeight(sidebarItem.clientHeight);
+        }, 50);
+    }, []);
 
-        }
-    };
-    React.useEffect(() => {
-        setEffectMenu(eventKeyClick);
-        if (eventKeyClick !== '') {
-            history(eventKeyClick);
-        }
-    }, [eventKeyClick, effectMenu, history]);
+    // change active index
+    useEffect(() => {
+        const curPath = window.location.pathname.split('/')[1];
+        const activeItem = sidebarNavItems.findIndex(item => item.section === curPath);
+        setActiveIndex(curPath.length === 0 ? 0 : activeItem);
+    }, [location]);
 
     return (
-        <S.MyNav variant='pills' className="flex-column" onSelect={handleClickMenu}  effect={effectMenu} >
-
-            <S.MyNav.Link eventKey="disabled" disabled className='textMenu' >
+        <S.MySideMenu className='sidebar'>
+            <div className="sidebar__logo">
                 MENU
-            </S.MyNav.Link>
-            <S.MyNav.Link eventKey='/' className='btn-menu' >HOME</S.MyNav.Link>
-            <S.MyNav.Link eventKey='/Dashboard' className='btn-menu'>DASHBOARD</S.MyNav.Link>
-            <S.MyNav.Link eventKey='' className='btn-menu' onClick={() => setMyMenu(!myMenu)} >SERVIÇOS</S.MyNav.Link>
-            {
-                myMenu &&
-                <>
-                    <S.MyNav.Link eventKey='' className='btn-menu' >AGENDAR NOVO</S.MyNav.Link>
-                    <S.MyNav.Link eventKey='/services' className='btn-menu' >AGENDADOS/REALIZADOS</S.MyNav.Link>
-                </>
-            }
-            <CadastroModal tituloButton={'CADASTRO'} />
-            <LoginModal tituloButton={'LOGIN'} />
-
-        </S.MyNav >
-    );
+            </div>
+            <div ref={sidebarRef} className="sidebar__menu">
+                <div
+                    ref={indicatorRef}
+                    className="sidebar__menu__indicator"
+                    style={{
+                        transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
+                    }}
+                ></div>
+                {
+                    sidebarNavItems.map((item, index) => (
+                        <Link to={item.to} key={index}>
+                            <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
+                                <div className="sidebar__menu__item__icon">
+                                    {item.icon}
+                                </div>
+                                <div className="sidebar__menu__item__text">
+                                    {item.display}
+                                </div>
+                            </div>
+                        </Link>
+                    ))
+                }
+            </div>
+        </S.MySideMenu>
+    )
 };
-export default SideBAr;
+
+export default Sidebar;
