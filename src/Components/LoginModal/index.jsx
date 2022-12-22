@@ -6,17 +6,20 @@ import { AuthContext } from '../../context/Auth';
 import { toast } from 'react-toastify';
 
 
+
 export default function LoginModal({ showCadastro,tituloButton }) {
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
-    const { login,signed} = useContext(AuthContext);
+    const { login,signed,navigate} = useContext(AuthContext);
 
     const handleClose = () => {
         setShow(false);
         setEmail('');
-        setsenha('');
+        setsenha(''); 
+        navigate('/');      
+        
     };
     const clickToLogin = (e) => {
         e.preventDefault();

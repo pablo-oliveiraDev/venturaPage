@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const MySideMenu = styled.div`
 height:800px;
 width: 380px;
+background-color: rgba(4,4,4,0.1);
 .sidebar {
     position: fixed;
     top: 0;

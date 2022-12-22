@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {  useEffect, useRef, useState } from 'react';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import * as S from '../assets/Styles/Components/sideBar2';
 import CadastroModal from '../CadastroModal';
 import LoginModal from '../LoginModal';
 import * as IconsMenu from 'react-icons/tb';
+
 
 
 const sidebarNavItems = [
@@ -40,14 +41,14 @@ const sidebarNavItems = [
     {
         display: <CadastroModal as={Link} tituloButton={'Cadastro'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        to: 'cadastro',
-        section: 'cadastro'
+        to:null,
+        section: ''
     },
     {
-        display: <LoginModal tituloButton={'Login'} />,
-        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        to: 'cadastro',
-        section: 'cadastro'
+        display: <LoginModal Navigate={Navigate}tituloButton={'Login'} />,
+        icon: <i className='bx bx-receipt'><IconsMenu.TbUser size={20} /></i>,
+        to: null,
+        section: ''
     },
 ]
 
@@ -57,6 +58,8 @@ const Sidebar = () => {
     const sidebarRef = useRef();
     const indicatorRef = useRef();
     const location = useLocation();
+   
+   
 
     useEffect(() => {
         setTimeout(() => {
