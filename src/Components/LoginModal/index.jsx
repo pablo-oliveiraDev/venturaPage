@@ -47,7 +47,7 @@ export default function LoginModal({ showCadastro,tituloButton }) {
 
     return (
         <>
-            <S.ShowButton onClick={handleShow} statusClick={show}>
+            <S.ShowButton onClick={handleShow} >
                 {tituloButton}
             </S.ShowButton>
 

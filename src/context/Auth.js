@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
 import api from '../Components/services/api';
 
@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loadingAuth, setLoadingAuth] = useState(false);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+    
     
 
 
@@ -128,7 +128,7 @@ export const AuthProvider = ({ children }) => {
             setUser,
             storageUser,
             logOut,
-            navigate,
+            
         }}
         >
             {children}

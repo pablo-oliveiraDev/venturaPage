@@ -41,14 +41,14 @@ const sidebarNavItems = [
     {
         display: <CadastroModal as={Link} tituloButton={'Cadastro'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        to:null,
-        section: ''
+        to:'/cadastro',
+        section: 'cadastro'
     },
     {
-        display: <LoginModal Navigate={Navigate}tituloButton={'Login'} />,
+        display: <LoginModal className="sidebar__menu__item__text" tituloButton={'Login'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbUser size={20} /></i>,
-        to: null,
-        section: ''
+        to: 'login',
+        section: 'login'
     },
 ]
 
