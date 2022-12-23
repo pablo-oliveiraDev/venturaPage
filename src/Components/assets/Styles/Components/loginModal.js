@@ -34,22 +34,17 @@ export const ShowButton = styled.button`
         background:none;
         border:none;
         display: flex;
-            align-items: center;
-            place-content: flex-start;
-           
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #555555;
-            transition: color 0.3s ease-in-out;
-
-       
-
-   
-
-
+        align-items: center;
+        place-content: flex-start;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color:${props=>props.active ? '#fff' : '#555555' };
+        transition: color 0.3s ease-in-out;            
+        background:${props=>props.active ? '#09fe' : 'none' };
 
       
-
+         
+    
 `;
 
 export const MyModal = styled(Modal)`

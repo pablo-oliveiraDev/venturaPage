@@ -29,29 +29,19 @@ export const MyButton = styled(Button)`
 
 `;
 export const ShowButton = styled.button`
-        /* width:230px;
-        text-decoration:none;
-        list-style:none; */
-        /* text-align:left;
-        margin: 10px 0; */
-        border:none;
-        /* color: #0d6efd;
-        padding:0 15px;
-        font-size:23px;
-        font-weight:700; */
+        list-style:none;
         background:none;
-        /* transition: color .15s
-        ease-in-out,
-        background-color .15s ease-in-out,
-        border-color .15s ease-in-out; */
-
-        /* :hover{
-            color:#0a58ca;
-            
-        } */
-        
-      
-
+        border:none;
+        display: flex;
+        align-items: center;
+        place-content: flex-start;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #555555;
+        transition: color 0.3s ease-in-out;  
+        .active{
+            color:#fff;
+        }
 `;
 
 export const MyModal = styled(Modal)`

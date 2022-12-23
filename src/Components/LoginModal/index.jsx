@@ -7,23 +7,31 @@ import { toast } from 'react-toastify';
 
 
 
-export default function LoginModal({ showCadastro,tituloButton }) {
+export default function LoginModal({ showCadastro, tituloButton }) {
     const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
-    const { login,signed,navigate} = useContext(AuthContext);
+    const [active, setActive] = useState(false);
+    const { login, signed } = useContext(AuthContext);
+
+    const handleShow = () => {
+        setShow(true);
+        setActive(true);
+        
+        
+    };
 
     const handleClose = () => {
         setShow(false);
         setEmail('');
-        setsenha(''); 
-        navigate('/');      
-        
+        setsenha('');
+        setActive(false);
+
+
     };
     const clickToLogin = (e) => {
         e.preventDefault();
-        if(!!signed){
+        if (!!signed) {
             toast.info('Usuário ja logado!Por favor click em logout antes de fazer o login novamente!');
             return;
         };
@@ -37,7 +45,7 @@ export default function LoginModal({ showCadastro,tituloButton }) {
             )
             handleClose();
         } else {
-           toast.error('Os campos não podem estar vazios para efetuar o login!😣');
+            toast.error('Os campos não podem estar vazios para efetuar o login!😣');
             return;
         }
 
@@ -47,7 +55,7 @@ export default function LoginModal({ showCadastro,tituloButton }) {
 
     return (
         <>
-            <S.ShowButton onClick={handleShow} >
+            <S.ShowButton onClick={handleShow} active={active}>
                 {tituloButton}
             </S.ShowButton>
 

@@ -13,6 +13,8 @@ background-color: rgba(4,4,4,0.1);
     height: 800vh;
     width: 380px;
     background-color: #000;
+    list-style: none;
+    text-decoration:none;
 
     &__logo {
         display: grid;
@@ -29,6 +31,7 @@ background-color: rgba(4,4,4,0.1);
         &__item {
             display: flex;
             align-items: center;
+            justify-content:center;
             place-content: flex-start;
             padding: 1rem 3rem;
             font-size: 1.25rem;
