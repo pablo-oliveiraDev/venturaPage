@@ -37,8 +37,9 @@ export const ShowButton = styled.button`
         place-content: flex-start;
         font-size: 1.25rem;
         font-weight: 500;
-        color: #555555;
-        transition: color 0.3s ease-in-out;  
+        color:${props=>props.active ? '#fff' : '#555555' };
+        transition: color 0.3s ease-in-out;            
+        background:${props=>props.active ? '#09fe' : 'none' };
         .active{
             color:#fff;
         }

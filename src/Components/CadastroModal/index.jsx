@@ -6,9 +6,8 @@ import IMaskInput from 'react-input-mask';
 import { AuthContext } from '../../context/Auth';
 
 
-export default function CadastroModal({ showCadastro,tituloButton }) {
+export default function CadastroModal({ showCadastro, tituloButton }) {
     const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
     const [cpf, setCPF] = useState('');
@@ -22,10 +21,14 @@ export default function CadastroModal({ showCadastro,tituloButton }) {
     const [uf, setUf] = useState('');
     const [meuBairro, setMeuBairro] = useState('');
     const [mostrarEndereco, setMostarEndereco] = useState('');
-
-
+    const [active, setActive] = useState(false);
     const [msgError, setMsgError] = useState('');
     const { cadastro } = useContext(AuthContext);
+
+    const handleShow = () => {
+        setShow(true);
+        setActive(true);
+    };
 
     const handleClose = () => {
         setMostarEndereco('');
@@ -36,6 +39,7 @@ export default function CadastroModal({ showCadastro,tituloButton }) {
         setUf('');
         setMeuBairro('');
         setMsgError('');
+        setActive(false);
     };
     const clickToSave = (e) => {
         e.preventDefault();
@@ -92,7 +96,7 @@ export default function CadastroModal({ showCadastro,tituloButton }) {
                         setCidade(data.localidade);
                         setUf(data.uf);
                         setMeuBairro(data.bairro);
-                        
+
                     } else {
                         setRua('');
                         setCidade('');
@@ -115,7 +119,7 @@ export default function CadastroModal({ showCadastro,tituloButton }) {
 
     return (
         <>
-            <S.ShowButton onClick={handleShow}>
+            <S.ShowButton onClick={handleShow} active={active}>
                 {tituloButton}
             </S.ShowButton>
 
@@ -165,7 +169,7 @@ export default function CadastroModal({ showCadastro,tituloButton }) {
                                 name='telefone'
                             />
                         </label>)}
-                        
+
                         <label>CPF/CNPJ:
                             <IMaskInput
                                 type='text'
