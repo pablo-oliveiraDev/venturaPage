@@ -9,7 +9,7 @@ import * as IconsMenu from 'react-icons/tb';
 const sidebarNavItems = [
     {
         display: 'Home',
-        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20}/></i>,
+        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20} /></i>,
         to: '/',
         section: ''
     },
@@ -32,23 +32,12 @@ const sidebarNavItems = [
         section: 'user'
     },
     {
-        display: 'Orders',
+        display: <CadastroModal tituloButton={'Cadastro'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
         to: '/order',
         section: 'order'
     },
-    {
-        display: <CadastroModal as={Link} tituloButton={'Cadastro'} />,
-        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        to: 'cadastro',
-        section: 'cadastro'
-    },
-    {
-        display: <LoginModal tituloButton={'Login'} />,
-        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        to: 'cadastro',
-        section: 'cadastro'
-    },
+
 ]
 
 const Sidebar = () => {
@@ -88,21 +77,25 @@ const Sidebar = () => {
                 ></div>
                 {
                     sidebarNavItems.map((item, index) => (
-                        <Link to={item.to} key={index}>
-                            <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
-                                <div className="sidebar__menu__item__icon">
-                                    {item.icon}
+                        <>
+                            <Link to={item.to} key={index}>
+                                <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
+                                    <div className="sidebar__menu__item__icon">
+                                        {item.icon}
+                                    </div>
+                                    <div className="sidebar__menu__item__text">
+                                        {item.display}
+                                    </div>
                                 </div>
-                                <div className="sidebar__menu__item__text">
-                                    {item.display}
-                                </div>
-                            </div>
-                        </Link>
+
+                            </Link>
+
+                        </>
                     ))
-                }      
+                }
                 
             </div>
-            
+
         </S.MySideMenu>
     )
 };
