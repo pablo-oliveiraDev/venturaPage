@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+
 import { toast } from 'react-toastify';
 import api from '../Components/services/api';
 
@@ -8,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loadingAuth, setLoadingAuth] = useState(false);
     const [loading, setLoading] = useState(true);
+    
     
 
 
@@ -126,6 +128,7 @@ export const AuthProvider = ({ children }) => {
             setUser,
             storageUser,
             logOut,
+            
         }}
         >
             {children}

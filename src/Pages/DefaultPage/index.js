@@ -7,10 +7,10 @@ export default function DefaultPage() {
     const history = useNavigate();
     const [countTime, setCountTime] = useState(10);
     const local = window.location.href;
-    console.log(local);
+    
 
-    setTimeout(() => history('/'), 11000);
-    setInterval(() => setCountTime(countTime - 1), 1000);
+    // setTimeout(() => history('/'), 11000);
+    // setInterval(() => setCountTime(countTime - 1), 1000);
 
     return (
         <Layout>

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 export const MySideMenu = styled.div`
 height:800px;
 width: 380px;
+background-color: rgba(4,4,4,0.1);
 .sidebar {
     position: fixed;
     top: 0;
@@ -12,6 +13,8 @@ width: 380px;
     height: 800vh;
     width: 380px;
     background-color: #000;
+    list-style: none;
+    text-decoration:none;
 
     &__logo {
         display: grid;
@@ -28,6 +31,7 @@ width: 380px;
         &__item {
             display: flex;
             align-items: center;
+            justify-content:center;
             place-content: flex-start;
             padding: 1rem 3rem;
             font-size: 1.25rem;

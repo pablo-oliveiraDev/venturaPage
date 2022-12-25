@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Navigate, useLocation } from 'react-router-dom';
 import * as S from '../assets/Styles/Components/sideBar2';
 import CadastroModal from '../CadastroModal';
 import LoginModal from '../LoginModal';
@@ -9,43 +9,61 @@ import * as IconsMenu from 'react-icons/tb';
 const sidebarNavItems = [
     {
         display: 'Home',
-        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20} /></i>,
+        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20}/></i>,
         to: '/',
         section: ''
     },
     {
         display: 'Dashboard',
         icon: <i className='bx bx-star'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        num: 2,
         to: '/Dashboard',
         section: 'Dashboard'
     },
     {
         display: 'Serviços',
         icon: <i className='bx bx-calendar'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        num: 3,
         to: '/services',
         section: 'services'
     },
     {
         display: 'User',
         icon: <i className='bx bx-user'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        num: 4,
         to: '/user',
         section: 'user'
     },
     {
         display: <CadastroModal tituloButton={'Cadastro'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        num: 5,
         to: '/order',
         section: 'order'
     },
-
+    {
+        display: <CadastroModal as={Link} tituloButton={'Cadastro'} />,
+        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        to: 'cadastro',
+        section: 'cadastro'
+    },
+    {
+        display: <LoginModal tituloButton={'Login'} />,
+        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        to: 'cadastro',
+        section: 'cadastro'
+    },
 ]
 
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [stepHeight, setStepHeight] = useState(0);
+
     const sidebarRef = useRef();
     const indicatorRef = useRef();
     const location = useLocation();
+
+
 
     useEffect(() => {
         setTimeout(() => {
@@ -62,6 +80,7 @@ const Sidebar = () => {
         setActiveIndex(curPath.length === 0 ? 0 : activeItem);
     }, [location]);
 
+
     return (
         <S.MySideMenu className='sidebar'>
             <div className="sidebar__logo">
@@ -77,22 +96,18 @@ const Sidebar = () => {
                 ></div>
                 {
                     sidebarNavItems.map((item, index) => (
-                        <>
-                            <Link to={item.to} key={index}>
-                                <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
-                                    <div className="sidebar__menu__item__icon">
-                                        {item.icon}
-                                    </div>
-                                    <div className="sidebar__menu__item__text">
-                                        {item.display}
-                                    </div>
+                        <Link to={item.to} key={index}>
+                            <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
+                                <div className="sidebar__menu__item__icon">
+                                    {item.icon}
                                 </div>
-
-                            </Link>
-
-                        </>
+                                <div className="sidebar__menu__item__text">
+                                    {item.display}
+                                </div>
+                            </div>
+                        </Link>
                     ))
-                }
+                }      
                 
             </div>
 
