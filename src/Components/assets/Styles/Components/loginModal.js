@@ -30,20 +30,16 @@ export const MyButton = styled(Button)`
 `;
 export const ShowButton = styled.button`
        
-        list-style:none;
-        background:none;
-        border:none;
-        display: flex;
-        align-items: center;
-        place-content: flex-start;
-        font-size: 1.25rem;
-        font-weight: 500;
-        color:${props=>props.active ? '#fff' : '#555555' };
-        transition: color 0.3s ease-in-out;            
-        background:${props=>props.active ? '#09fe' : 'none' };
-
-      
-         
+    list-style:none;
+    background:none;
+    border:none;
+    
+    font-size:${props => props.active ? '2rem' : '1.25rem'};
+    font-weight:${props => props.active ? 700 : 500};
+    color:${props => props.active ? '#308efe' : '#555555'};
+    transition: color 0.3s ease-in-out;            
+    
+     
     
 `;
 

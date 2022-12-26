@@ -29,20 +29,18 @@ export const MyButton = styled(Button)`
 
 `;
 export const ShowButton = styled.button`
-        list-style:none;
-        background:none;
-        border:none;
-        display: flex;
-        align-items: center;
-        place-content: flex-start;
-        font-size: 1.25rem;
-        font-weight: 500;
-        color:${props=>props.active ? '#fff' : '#555555' };
-        transition: color 0.3s ease-in-out;            
-        background:${props=>props.active ? '#09fe' : 'none' };
-        .active{
-            color:#fff;
-        }
+    list-style:none;
+    background:none;
+    border:none;    
+   
+    font-size:${props => props.active ? '2rem' : '1.25rem'};
+    font-weight:${props => props.active ? 700 : 500};
+    color:${props => props.active ? '#308efe' : '#555555'};
+    transition: color 0.3s ease -in -out;            
+   
+    .active{
+    color: #fff;
+}
 `;
 
 export const MyModal = styled(Modal)`
@@ -50,64 +48,64 @@ export const MyModal = styled(Modal)`
     .Body,
     .Footer,
     .Header {
-        background: #09fe;
-        color:#fff;
-        
-             
-    }
+    background: #09fe;
+    color: #fff;
+
+
+}
     .Body,
     .Footer,
     .Header {
-        background-image: url(flocoDeNeve.png);
-        background-size:80px;
-        background-repeat:no-repeat;
-        background-position:right center;
+    background-image: url(flocoDeNeve.png);
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position:right center;
 
-    }
+}
    
     .Title{
-        margin:0;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
     label{
-        margin: 10px 0;
-        font-weight:700;
-        border: 1.5px solid #fff;
-        padding-left:1ch;
-       
-        
-    }
+    margin: 10px 0;
+    font-weight: 700;
+    border: 1.5px solid #fff;
+    padding-left: 1ch;
+
+
+}
     input{
-        font-size:20px;
-        margin-left:1ch;
-    }
+    font-size: 20px;
+    margin-left: 1ch;
+}
 
     .Body{
-        display: flex;
-        align-items:center;
-        justify-content:center;
-       
-    }
-    h3 .subTitle{
-        font-weight:700;        
-        text-align:center;
-        font-size:20px;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+h3.subTitle{
+    font-weight: 700;
+    text-align: center;
+    font-size: 20px;
+}
     .containerSub{
-        width: 100%;
-        display: flex;
-        flex-direction:row;
-        align-items:center;
-        justify-content:center;
-    }
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
     .containerInput{
-        
-        display: flex;
-        flex-direction:column;
-        align-items:flex-end;
-        justify-content:center;
-    }
-    
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
 `;

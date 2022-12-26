@@ -6,7 +6,7 @@ import IMaskInput from 'react-input-mask';
 import { AuthContext } from '../../context/Auth';
 
 
-export default function CadastroModal({ showCadastro, tituloButton }) {
+export default function CadastroModal({ tituloButton }) {
     const [show, setShow] = useState(false);
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
@@ -25,10 +25,7 @@ export default function CadastroModal({ showCadastro, tituloButton }) {
     const [msgError, setMsgError] = useState('');
     const { cadastro } = useContext(AuthContext);
 
-    const handleShow = () => {
-        setShow(true);
-        setActive(true);
-    };
+     
 
     const handleClose = () => {
         setMostarEndereco('');
@@ -82,6 +79,10 @@ export default function CadastroModal({ showCadastro, tituloButton }) {
         setUf('');
         setMeuBairro('');
         setMsgError('');
+    };
+    const handleShow = () => {
+        setShow(true);
+        setActive(true);
     };
 
     const loadCep = () => {

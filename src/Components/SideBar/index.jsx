@@ -9,7 +9,7 @@ import * as IconsMenu from 'react-icons/tb';
 const sidebarNavItems = [
     {
         display: 'Home',
-        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20}/></i>,
+        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20} /></i>,
         to: '/',
         section: ''
     },
@@ -28,37 +28,24 @@ const sidebarNavItems = [
         section: 'services'
     },
     {
-        display: 'User',
-        icon: <i className='bx bx-user'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        num: 4,
-        to: '/user',
-        section: 'user'
-    },
-    {
         display: <CadastroModal tituloButton={'Cadastro'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        num: 5,
-        to: '/order',
-        section: 'order'
-    },
-    {
-        display: <CadastroModal as={Link} tituloButton={'Cadastro'} />,
-        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        to: 'cadastro',
-        section: 'cadastro'
+  
+        section: 'cadastro',
+        new: 5,
+        
     },
     {
         display: <LoginModal tituloButton={'Login'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-        to: 'cadastro',
-        section: 'cadastro'
+     
+        section: 'login'
     },
 ]
 
 const Sidebar = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [stepHeight, setStepHeight] = useState(0);
-
     const sidebarRef = useRef();
     const indicatorRef = useRef();
     const location = useLocation();
@@ -83,6 +70,7 @@ const Sidebar = () => {
 
     return (
         <S.MySideMenu className='sidebar'>
+
             <div className="sidebar__logo">
                 MENU
             </div>
@@ -96,8 +84,10 @@ const Sidebar = () => {
                 ></div>
                 {
                     sidebarNavItems.map((item, index) => (
-                        <Link to={item.to} key={index}>
-                            <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
+                        <Link to={item.to} key={index} >
+
+                            <div  className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
+
                                 <div className="sidebar__menu__item__icon">
                                     {item.icon}
                                 </div>
@@ -107,11 +97,9 @@ const Sidebar = () => {
                             </div>
                         </Link>
                     ))
-                }      
-                
+                }
             </div>
-
-        </S.MySideMenu>
+        </S.MySideMenu >
     )
 };
 
