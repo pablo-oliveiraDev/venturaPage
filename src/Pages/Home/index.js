@@ -1,6 +1,8 @@
 import React from 'react';
 import Layout from '../../Components/Layout';
-import * as S from '../../Components/assets/Styles/Pages/home'
+import * as S from '../../Components/assets/Styles/Pages/home';
+import ImgHome1 from '../../Components/assets/img/imgHome/ar1.jpg';
+import ImgHome2 from '../../Components/assets/img/imgHome/manutAr.jpg';
 
 
 
@@ -10,37 +12,37 @@ export default function Home() {
       <h1>É uma Honra atende-los com honestidade e dignidade! </h1>
       <S.MyContainer>
         <S.MyCarousel>
-          <S.MyCarousel.Item>
+          <S.MyCarousel.Item className='imgItem'>
             <img
               className="d-block w-100"
-              src=""
-              alt="First slide"
+              src={ImgHome1}
+              alt="Instalação de ar"
             />
             <S.MyCarousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              <h3>Instalação de ar</h3>
+              <p>Instalação de qualidade para seu ar esta sempre gelando!</p>
             </S.MyCarousel.Caption>
           </S.MyCarousel.Item>
-          <S.MyCarousel.Item>
+          <S.MyCarousel.Item className='imgItem'>
             <img
               className="d-block w-100"
-              src=""
-              alt="Second slide"
+              src={ImgHome2}
+              alt="Manutenção"
             />
 
             <S.MyCarousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>Manutenção</h3>
+              <p>Manutenção de qualidade com ótimos preços</p>
             </S.MyCarousel.Caption>
           </S.MyCarousel.Item>
-          <S.MyCarousel.Item>
+          <S.MyCarousel.Item className='imgItem'>
             <img
               className="d-block w-100"
               src=""
               alt="Third slide"
             />
 
-            <S.MyCarousel.Caption>
+            <S.MyCarousel.Caption className='caption'>
               <h3>Third slide label</h3>
               <p>
                 Praesent commodo cursus magna, vel scelerisque nisl consectetur.
