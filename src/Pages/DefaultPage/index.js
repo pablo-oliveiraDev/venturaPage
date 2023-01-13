@@ -9,8 +9,8 @@ export default function DefaultPage() {
     const local = window.location.href;
     
 
-    // setTimeout(() => history('/'), 11000);
-    // setInterval(() => setCountTime(countTime - 1), 1000);
+    setTimeout(() => history('/'), 11000);
+    setInterval(() => setCountTime(countTime - 1), 1000);
 
     return (
         <Layout>

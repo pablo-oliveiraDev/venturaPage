@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link, Navigate, useLocation } from 'react-router-dom';
 import * as S from '../assets/Styles/Components/sideBar2';
 import CadastroModal from '../CadastroModal';
 import LoginModal from '../LoginModal';
 import * as IconsMenu from 'react-icons/tb';
+import { AuthContext } from '../../context/Auth';
 
 
 const sidebarNavItems = [
@@ -30,15 +31,15 @@ const sidebarNavItems = [
     {
         display: <CadastroModal tituloButton={'Cadastro'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-  
+
         section: 'cadastro',
         new: 5,
-        
+
     },
     {
         display: <LoginModal tituloButton={'Login'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
-     
+
         section: 'login'
     },
 ]
@@ -49,6 +50,7 @@ const Sidebar = () => {
     const sidebarRef = useRef();
     const indicatorRef = useRef();
     const location = useLocation();
+    const { signed } = useContext(AuthContext);
 
 
 
@@ -82,21 +84,20 @@ const Sidebar = () => {
                         transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
                     }}
                 ></div>
-                {
-                    sidebarNavItems.map((item, index) => (
-                        <Link to={item.to} key={index} >
+                {sidebarNavItems.map((item, index) => (
+                    <Link to={item.to} key={index} >
 
-                            <div  className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
+                        <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
 
-                                <div className="sidebar__menu__item__icon">
-                                    {item.icon}
-                                </div>
-                                <div className="sidebar__menu__item__text">
-                                    {item.display}
-                                </div>
+                            <div className="sidebar__menu__item__icon">
+                                {item.icon}
                             </div>
-                        </Link>
-                    ))
+                            <div className="sidebar__menu__item__text">
+                                {item.display}
+                            </div>
+                        </div>
+                    </Link>
+                ))
                 }
             </div>
         </S.MySideMenu >

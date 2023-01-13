@@ -11,7 +11,7 @@ export default function Services() {
     const { service, loadServiceByIdCliente } = useContext(ServicesContext);
 
     const HandleService = () => {
-        loadServiceByIdCliente(user.id, user.nome);
+        loadServiceByIdCliente(user.id, user.name);
     };
     return (
         <Layout>
@@ -19,8 +19,7 @@ export default function Services() {
                 <S.Itens>
                     <h1>Serviços</h1>
                 </S.Itens>
-                <S.Itens>
-                    <S.MyButton variant='primary' onClick={() => HandleService()}>Verificar Serviços</S.MyButton>
+                <S.Itens>                   
                     <NewService tituloButton={'+ serviços'} />
                 </S.Itens>
             </S.Container>

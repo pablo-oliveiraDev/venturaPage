@@ -23,9 +23,9 @@ export default function NewService({ tituloButton }) {
     const [mostrarEndereco, setMostarEndereco] = useState('');
     const [active, setActive] = useState(false);
     const [msgError, setMsgError] = useState('');
-    const { cadastro,user } = useContext(AuthContext);
+    const { cadastro, user } = useContext(AuthContext);
 
-     
+
 
     const handleClose = () => {
         setMostarEndereco('');
@@ -83,17 +83,15 @@ export default function NewService({ tituloButton }) {
         setActive(true);
     };
 
-    
-
     return (
         <>
-            <S.ShowButton onClick={handleShow} active={active}>
+            <S.ShowButton show={true} onClick={handleShow} active={active}>
                 {tituloButton}
             </S.ShowButton>
 
             <S.MyModal show={show} onHide={handleClose}>
                 <S.MyModal.Header className='Header'>
-                    <S.MyModal.Title className='Title'><IconsFc.FcReadingEbook size={28} /> NOVO CADASTRO</S.MyModal.Title>
+                    <S.MyModal.Title className='Title'><IconsFc.FcReadingEbook size={28} />AGENDAR SERVIÇO</S.MyModal.Title>
                 </S.MyModal.Header>
                 <S.MyModal.Body className='Body'>
 
@@ -102,28 +100,20 @@ export default function NewService({ tituloButton }) {
                         <div className='containerSub'>
                             <h3 className='SubTitle'>DADOS PESSOAIS</h3>
                         </div>
-                        <label>NOME:
-                            <input
-                                type='text'
-                                name='nome'
-                                placeholder='Digite seu nome'
-                                value={user.nome+' '+user.sobrenome}
-                                onChange={(e) => setNome(e.target.value)}
-                                disabled
-                            />
+                        <label for='select'>SERVIÇO :
+                            <select placeholder='teste' 
+                            defaultValue={'Serviço desejado'}                                
+                            >
+                                <option disabled >Serviço desejado</option>
+                                <option>Visita tecnica</option>
+                                <option>Manutenção de AR</option>
+                                <option>Outros</option>
+                            </select>
                         </label>
-                       
-                        <label>TELEFONE:
-                            <IMaskInput
-                                type='text'
-                                name='telefone'
-                                mask='(99)99999-9999'
-                                placeholder='Digite seu telefone'
-                                value={user.telefone}
-                                onChange={(e) => setTelefone(e.target.value.replace(/\D/g, ''))}
-                                disabled
+                        <label>DATA :
+                            <input type='date'
+                                placeholder='DD/MM/YYYY'
                             />
-
                         </label>
                         {telefone.substring(2, 3) === '9' && (<label>POSSUI WHATSAPP
                             <input
@@ -153,15 +143,7 @@ export default function NewService({ tituloButton }) {
                                 disabled
                             />
                         </label>
-                        <label>SENHA:
-                            <input
-                                type='password'
-                                name='senha'
-                                placeholder='Digite aqui sua senha'
-                                value={senha}
-                                onChange={(e) => setsenha(e.target.value)}
-                            />
-                        </label>
+
                         <div className='containerSub'>
                             <h3 className='SubTitle'>ENDEREÇO</h3>
                         </div>
@@ -171,46 +153,49 @@ export default function NewService({ tituloButton }) {
                                 name='cep'
                                 mask='99999-999'
                                 placeholder='Digite o seu cep'
-                                value={cep}
+                                value={user.cep}
                                 onChange={(e) => handleChange(e.target.value)}
+                                disabled
                             />
                         </label>
-                         <label>RUA:
+                        <label>RUA:
                             <input
                                 type='text'
                                 name='rua'
                                 placeholder='Digite o nome da rua'
-                                value={rua}
+                                value={user.rua}
                                 onChange={(e) => setRua(e.target.value)}
+                                disabled
                             />
                         </label>
-                            <label>BAIRRO:
-                                <input
-                                    type='text'
-                                    name='bairro'
-                                    placeholder='Digite o nome da bairro'
-                                    value={meuBairro}
-                                    onChange={(e) => setMeuBairro(e.target.value)}
-                                />
-                            </label>
-                            <label>CIDADE:
-                                <input
-                                    type='text'
-                                    name='cidade'
-                                    placeholder='Digite o nome da sua cidade'
-                                    value={cidade + '-' + uf}
-                                    onChange={(e) => setCidade(e.target.value)}
-                                />
-                            </label>
-                            <label>NUMERO:
-                                <input
-                                    type='text'
-                                    name='numero'
-                                    placeholder='Numero da sua casa'
-                                    value={numero}
-                                    onChange={(e) => setNumero(e.target.value)}
-                                />
-                            </label>
+                        <label>BAIRRO:
+                            <input
+                                type='text'
+                                name='bairro'
+                                placeholder='Digite o nome da bairro'
+                                value={user.meuBairro}
+                                onChange={(e) => setMeuBairro(e.target.value)}
+                                disabled
+                            />
+                        </label>
+                        <label>CIDADE:
+                            <input
+                                type='text'
+                                name='cidade'
+                                placeholder='Digite o nome da sua cidade'
+                                value={user.cidade + '-' + user.uf}
+                                onChange={(e) => setCidade(e.target.value)}
+                            />
+                        </label>
+                        <label>NUMERO:
+                            <input
+                                type='text'
+                                name='numero'
+                                placeholder='Numero da sua casa'
+                                value={numero}
+                                onChange={(e) => setNumero(e.target.value)}
+                            />
+                        </label>
                     </div>
 
                 </S.MyModal.Body>
