@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
 import * as IconsFc from 'react-icons/fc';
-import * as S from '../assets/Styles/Components/cadastroModal';
+import * as S from '../assets/Styles/Components/newServices';
 import IMaskInput from 'react-input-mask';
 import { AuthContext } from '../../context/Auth';
 
@@ -24,6 +24,7 @@ export default function NewService({ tituloButton }) {
     const [active, setActive] = useState(false);
     const [msgError, setMsgError] = useState('');
     const { cadastro, user } = useContext(AuthContext);
+    const [countTextarea, setCountTextarea] = useState('');
 
 
 
@@ -83,6 +84,14 @@ export default function NewService({ tituloButton }) {
         setActive(true);
     };
 
+    function textareaChange(e) {
+        e.preventDefault();
+        
+   
+        setCountTextarea(e.target.value);
+        
+    }
+
     return (
         <>
             <S.ShowButton show={true} onClick={handleShow} active={active}>
@@ -101,8 +110,8 @@ export default function NewService({ tituloButton }) {
                             <h3 className='SubTitle'>DADOS PESSOAIS</h3>
                         </div>
                         <label for='select'>SERVIÇO :
-                            <select placeholder='teste' 
-                            defaultValue={'Serviço desejado'}                                
+                            <select placeholder='teste'
+                                defaultValue={'Serviço desejado'}
                             >
                                 <option disabled >Serviço desejado</option>
                                 <option>Visita tecnica</option>
@@ -115,96 +124,34 @@ export default function NewService({ tituloButton }) {
                                 placeholder='DD/MM/YYYY'
                             />
                         </label>
-                        {telefone.substring(2, 3) === '9' && (<label>POSSUI WHATSAPP
-                            <input
-                                type='radio'
-                                name='telefone'
-                            />
-                        </label>)}
-
-                        <label>CPF/CNPJ:
-                            <IMaskInput
-                                type='text'
-                                name='cpf'
-                                mask='999.999.999-99'
-                                placeholder='Digite o seu cpf'
-                                value={user.cpf}
-                                onChange={(e) => setCPF(e.target.value)}
-                                disabled
-                            />
+                        <label className='problema'>Relatar problema :
+                            <textarea
+                                value={countTextarea}
+                                onChange={textareaChange}
+                                rows={5}
+                                maxLength={200}
+                                placeholder='Digite aqui uma breve descrição do seu problema'
+                            >
+                            </textarea>
+                            <span>{200 - countTextarea.length}</span>
                         </label>
-                        <label>EMAIL:
-                            <input
-                                type='text'
-                                name='email'
-                                placeholder='Digite seu melhor email'
-                                value={user.email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                disabled
-                            />
+                        <label >OBS :
+                            <textarea disabled
+                                rows={5}
+                            >Todos os pedidos serão avaliados e
+                                e confirmada a data junto ao nossos clientes
+                            </textarea>
                         </label>
 
-                        <div className='containerSub'>
-                            <h3 className='SubTitle'>ENDEREÇO</h3>
-                        </div>
-                        <label>CEP:
-                            <IMaskInput
-                                type='text'
-                                name='cep'
-                                mask='99999-999'
-                                placeholder='Digite o seu cep'
-                                value={user.cep}
-                                onChange={(e) => handleChange(e.target.value)}
-                                disabled
-                            />
-                        </label>
-                        <label>RUA:
-                            <input
-                                type='text'
-                                name='rua'
-                                placeholder='Digite o nome da rua'
-                                value={user.rua}
-                                onChange={(e) => setRua(e.target.value)}
-                                disabled
-                            />
-                        </label>
-                        <label>BAIRRO:
-                            <input
-                                type='text'
-                                name='bairro'
-                                placeholder='Digite o nome da bairro'
-                                value={user.meuBairro}
-                                onChange={(e) => setMeuBairro(e.target.value)}
-                                disabled
-                            />
-                        </label>
-                        <label>CIDADE:
-                            <input
-                                type='text'
-                                name='cidade'
-                                placeholder='Digite o nome da sua cidade'
-                                value={user.cidade + '-' + user.uf}
-                                onChange={(e) => setCidade(e.target.value)}
-                            />
-                        </label>
-                        <label>NUMERO:
-                            <input
-                                type='text'
-                                name='numero'
-                                placeholder='Numero da sua casa'
-                                value={numero}
-                                onChange={(e) => setNumero(e.target.value)}
-                            />
-                        </label>
                     </div>
 
                 </S.MyModal.Body>
                 <S.MyModal.Footer className='Footer'>
                     <S.MyButton className='btn-fechar' variant="secondary" onClick={handleClose}>
-                        Close
+                        Cancelar
                     </S.MyButton>
                     <S.MyButton className='btn-save' variant="primary" onClick={clickToSave}>
-                        Save Changes
+                        Solicitar
                     </S.MyButton>
                 </S.MyModal.Footer>
             </S.MyModal>

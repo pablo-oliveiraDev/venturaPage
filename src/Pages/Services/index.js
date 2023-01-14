@@ -15,14 +15,21 @@ export default function Services() {
     };
     return (
         <Layout>
+
             <S.Container>
-                <S.Itens>
+
+                <S.ItensTitulo className='titulo'>
                     <h1>Serviços</h1>
+                </S.ItensTitulo>
+                <S.Itens>
+                    <S.MyScrool>
+                        <NewService tituloButton={'+ serviços'} />
+                        
+                    </S.MyScrool>
                 </S.Itens>
-                <S.Itens>                   
-                    <NewService tituloButton={'+ serviços'} />
-                </S.Itens>
+
             </S.Container>
-        </Layout>
+
+        </Layout >
     );
 }

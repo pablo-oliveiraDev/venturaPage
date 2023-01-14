@@ -18,9 +18,9 @@ export const AuthProvider = ({ children }) => {
         loadServices();
     }, []);
 
-    function loadServiceByIdCliente(idCliente, userName) {
+    async function loadServiceByIdCliente(idCliente, userName) {
         if (idCliente) {
-            fetch(`${api}/servicos/${idCliente}`)
+             await api.get(`/servicos/${idCliente}`)
             .then(res =>res.json())
             .then((data)=>{
                 setService(data);
