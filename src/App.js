@@ -9,25 +9,22 @@ import Footer from './Components/Footer';
 import StatusBar from './Components/StatusBar';
 import GlobalStyle from './Components/assets/Styles/Pages/GlobalStyles';
 import AuthProvider from './context/Auth';
-
-
-
-
-
+import ServicesProvider from './context/Services';
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Header />
-        <StatusBar />
-        <ToastContainer autoClose={3500} theme='colored' />
-        <MainRoutes />
-        <Footer />
-        <GlobalStyle />
-      </Router>
+      <ServicesProvider>
+        <Router>
+          <Header />
+          <StatusBar />
+          <ToastContainer autoClose={3500} theme='colored' />
+          <MainRoutes />
+          <Footer />
+          <GlobalStyle />
+        </Router>
+      </ServicesProvider>
     </AuthProvider>
   );
-}
-
+};
 export default App;

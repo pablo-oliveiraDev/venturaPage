@@ -2,96 +2,60 @@ import * as React from 'react';
 import { useState, useContext } from 'react';
 import * as IconsFc from 'react-icons/fc';
 import * as S from '../assets/Styles/Components/newServices';
-import IMaskInput from 'react-input-mask';
 import { AuthContext } from '../../context/Auth';
+import { ServicesContext } from '../../context/Services';
 
 
 export default function NewService({ tituloButton }) {
     const [show, setShow] = useState(false);
-    const [nome, setNome] = useState('');
-    const [IdCliente, setIdCliente] = useState('');
-    const [cpf, setCPF] = useState('');
-    const [email, setEmail] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [senha, setsenha] = useState('');
-    const [cep, setCep] = useState('');
-    const [rua, setRua] = useState('');
-    const [cidade, setCidade] = useState('');
-    const [numero, setNumero] = useState('');
-    const [uf, setUf] = useState('');
-    const [meuBairro, setMeuBairro] = useState('');
-    const [mostrarEndereco, setMostarEndereco] = useState('');
+    const [descricao, setDescricao] = useState('');
+    const [dataServico, setDataServico] = useState('');
+    const [tipoServico, setTipoServico] = useState('');
     const [active, setActive] = useState(false);
-    const [msgError, setMsgError] = useState('');
-    const { cadastro, user } = useContext(AuthContext);
-    const [countTextarea, setCountTextarea] = useState('');
-
-
+    const { user } = useContext(AuthContext);
+    const { newService } = useContext(ServicesContext);
 
     const handleClose = () => {
-        setMostarEndereco('');
         setShow(false);
-        setCep('');
-        setRua('');
-        setCidade('');
-        setUf('');
-        setMeuBairro('');
-        setMsgError('');
-        setActive(false);
+        setDescricao('');
+        setDataServico('');
+        setTipoServico('');
     };
     const clickToSave = (e) => {
         e.preventDefault();
-        if (nome !== '' &&
-            cpf !== '' &&
-            email !== '' &&
-            telefone !== '' &&
-            senha !== '' &&
-            cep !== '' &&
-            rua !== '' &&
-            cidade !== '' &&
-            uf !== '' &&
-            meuBairro !== '') {
-            cadastro(
-                nome,
-                email,
-                cpf,
-                telefone,
-                senha,
-                rua,
-                numero,
-                cep,
-                cidade,
-                uf,
-                meuBairro
+        if (descricao !== '' &&
+            tipoServico !== '' &&
+            dataServico !== '') {
+            newService(
+                user.id,
+                user.nome,
+                user.email,
+                user.cpf,
+                user.telefone,
+                user.cidade,
+                user.rua,
+                user.numero,
+                user.cep,
+                user.uf,
+                user.meuBairro,
+                tipoServico,
+                descricao,
+                dataServico
             )
             handleClose();
         } else {
             alert('Os Campos nao podem estar vazios!🙁');
             return;
         }
-
-    }
-    const handleChange = (valueCep) => {
-        setCep(valueCep);
-        setRua('');
-        setCidade('');
-        setUf('');
-        setMeuBairro('');
-        setMsgError('');
     };
     const handleShow = () => {
         setShow(true);
         setActive(true);
     };
-
     function textareaChange(e) {
         e.preventDefault();
-        
-   
-        setCountTextarea(e.target.value);
-        
-    }
-
+        setDescricao(e.target.value);
+    };
     return (
         <>
             <S.ShowButton show={true} onClick={handleShow} active={active}>
@@ -111,40 +75,41 @@ export default function NewService({ tituloButton }) {
                         </div>
                         <label for='select'>SERVIÇO :
                             <select placeholder='teste'
-                                defaultValue={'Serviço desejado'}
+                                defaultValue={'Selecione o serviço desejado'}
+                                onChange={(e) => setTipoServico(e.target.value)}
                             >
-                                <option disabled >Serviço desejado</option>
-                                <option>Visita tecnica</option>
-                                <option>Manutenção de AR</option>
-                                <option>Outros</option>
+                                <option disabled >Selecione o serviço desejado</option>
+                                <option value='visita tecnica'>Visita tecnica</option>
+                                <option value='manutencao de ar'>Manutenção de AR</option>
+                                <option value='outros'>Outros</option>
                             </select>
                         </label>
-                        <label>DATA :
+                        <label>AGENDAR P/ :
                             <input type='date'
                                 placeholder='DD/MM/YYYY'
+                                value={dataServico}
+                                onChange={(e) => setDataServico(e.target.value)}
                             />
                         </label>
                         <label className='problema'>Relatar problema :
                             <textarea
-                                value={countTextarea}
+                                value={descricao}
                                 onChange={textareaChange}
                                 rows={5}
                                 maxLength={200}
-                                placeholder='Digite aqui uma breve descrição do seu problema'
+                                placeholder='Digite aqui uma breve descrição do problema do seu equipamanto'
                             >
                             </textarea>
-                            <span>{200 - countTextarea.length}</span>
+                            <span>{200 - descricao.length + ' '}caracteres</span>
                         </label>
-                        <label >OBS :
+                        <label className='obs'>OBSERVAÇÕES :
                             <textarea disabled
                                 rows={5}
-                            >Todos os pedidos serão avaliados e
-                                e confirmada a data junto ao nossos clientes
+                                value={'Todos os pedidos serão avaliados e confirmada a data junto ao nossos clientes'.toUpperCase()}
+                            >
                             </textarea>
                         </label>
-
                     </div>
-
                 </S.MyModal.Body>
                 <S.MyModal.Footer className='Footer'>
                     <S.MyButton className='btn-fechar' variant="secondary" onClick={handleClose}>
@@ -156,6 +121,5 @@ export default function NewService({ tituloButton }) {
                 </S.MyModal.Footer>
             </S.MyModal>
         </>
-
     );
-}
+};

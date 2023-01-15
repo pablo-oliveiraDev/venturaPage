@@ -63,13 +63,17 @@ export const MyModal = styled(Modal)`
     justify-content: center;
     align-items: center;
 }
-    label{
+    label {
     margin: 10px 0;
     font-weight: 700;
     border: 1.5px solid #fff;
     padding-left: 1ch;
 }
-label textarea {
+.obs {
+    display: flex;
+    flex-direction:column;
+}
+.obs textarea {
     resize: none;
     text-Align: center;
     font-Size: 20px;
