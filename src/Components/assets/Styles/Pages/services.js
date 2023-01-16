@@ -17,6 +17,7 @@ export const Itens = styled.div`
     justify-content: center;
     align-items:center;
     flex-direction: column;
+    
     width:1300px;
     height:700px;
     margin-top:0;
@@ -25,6 +26,7 @@ export const Itens = styled.div`
         width:100%;
         height:100%;
     }
+
 `;
 export const MyButton = styled(Button)`
 
@@ -39,6 +41,14 @@ export const MyScrool = styled.div`
   
   position:relative;
   //overflow: ${(props) => (props.setScroll === 1 ? 0 : "hidden")};
+  div {
+    background:#555555;
+    margin-bottom:7px;
+    width:95%;
+    border-radius:15px;
+    height:100px;
+    text-align:center;
+}
  @media(max-width:1024px){
   margin-top:-570px;
   height:600px;
