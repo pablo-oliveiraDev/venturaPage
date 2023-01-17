@@ -42,13 +42,36 @@ export const MyScrool = styled.div`
   position:relative;
   //overflow: ${(props) => (props.setScroll === 1 ? 0 : "hidden")};
   div {
-    background:#555555;
+    background: rgba(4,4,0,0.48);
     margin-bottom:7px;
     width:95%;
     border-radius:15px;
     height:100px;
     text-align:center;
 }
+.status span {
+    background:${props => props.status === '' ? '#00f' : '#000'};
+}
+label {
+    border:2px solid #fff;
+    padding: 0;
+    border-radius: 5px;
+    margin-left:10px;
+    padding-left:5px;
+    :first-child{
+        margin-left:0;
+    }
+}
+label span {
+    background: #fff;
+    margin-left:1ch;
+    width:100%;
+    height:100%;
+    
+    padding: 2px;
+    
+}
+
  @media(max-width:1024px){
   margin-top:-570px;
   height:600px;

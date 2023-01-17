@@ -46,7 +46,7 @@ export const ServicesProvider = ({ children }) => {
         breveDescricao,
         dataService) {       
         await api.post('/servicos', {
-            idCliente, userName, cpf, telefone, cidade, rua,numero,cep,uf,bairro, tipoDeServico, breveDescricao, dataService, status: status[0], dataPedido: new Date()
+            idCliente, userName, cpf, telefone, cidade, rua,numero,cep,uf,bairro, tipoDeServico, breveDescricao, dataService, status: status[0].toString(), dataPedido: new Date()
         }).then((res) => {
             if (res.status === 201) {
                 toast.success('Serviço agendado com sucesso!Em breve ligaremos para Confirmar a data e hora que estaremos indo até o local.👍')
