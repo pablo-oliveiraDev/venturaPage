@@ -13,7 +13,7 @@ export default function NewService({ tituloButton }) {
     const [tipoServico, setTipoServico] = useState('');
     const [active, setActive] = useState(false);
     const { user } = useContext(AuthContext);
-    const { newService } = useContext(ServicesContext);
+    const { newService,reload,setReload  } = useContext(ServicesContext);
 
     const handleClose = () => {
         setShow(false);
@@ -43,6 +43,7 @@ export default function NewService({ tituloButton }) {
                 dataServico
             )
             handleClose();
+            setReload(!reload);
         } else {
             alert('Os Campos nao podem estar vazios!🙁');
             return;

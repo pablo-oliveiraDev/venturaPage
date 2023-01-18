@@ -31,8 +31,9 @@ export const Itens = styled.div`
 export const MyButton = styled(Button)`
 
 `;
+let status = '';
 export const MyScrool = styled.div`
-
+    ${status = props => props.Status};
   width: 100%;
   height: 700px;
   overflow-y: scroll;
@@ -40,6 +41,7 @@ export const MyScrool = styled.div`
   scroll-behavior: auto;
   
   position:relative;
+ 
   //overflow: ${(props) => (props.setScroll === 1 ? 0 : "hidden")};
   div {
     background: rgba(4,4,0,0.48);
@@ -48,16 +50,25 @@ export const MyScrool = styled.div`
     border-radius:15px;
     height:100px;
     text-align:center;
+    .itensServices {
+        margin:0;
+        display: flex;
+        align-items:center;
+        justify-content:space-around;
+        flex-direction: row;
+        width:100%;
+        height:60px;
+        background:none;
+    }
 }
-.status span {
-    background:${props => props.status === '' ? '#00f' : '#000'};
-}
+
 label {
     border:2px solid #fff;
     padding: 0;
     border-radius: 5px;
     margin-left:10px;
     padding-left:5px;
+    font-weight:500;   
     :first-child{
         margin-left:0;
     }
@@ -92,4 +103,25 @@ label span {
   margin-top:-850px;
   height:300px;
   }
+  `;
+export const Status = styled.label`
+    z-index:2;
+    border:2px solid #fff;
+    padding: 0;
+    border-radius: 5px;
+    margin-left:10px;
+    padding-left:5px;
+    
+    
+    
+  .status {
+    margin:3px 3px;
+    border-radius: 5px;
+    z-index:-1;
+    ${props => props.Status === 'aberto' && 'background:#00f;color:#fff'};
+    ${props => props.Status === 'cancelado' && 'background:#f00;color:#fff'};
+    ${props => props.Status === 'andamento' && 'background:#FF8C00;color:#fff'};
+    ${props => props.Status === 'finalizado' && 'background:#00FF00;color:#fff'};
+    
+}
   `;
