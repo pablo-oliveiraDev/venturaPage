@@ -10,13 +10,24 @@ import NewService from '../../Components/NewService';
 
 export default function Services() {
     const { user, signed } = useContext(AuthContext);
-    const { service, loadServiceByIdCliente, updateService, reload, setReload } = useContext(ServicesContext);
-    const [pStatus, setPstatus] = useState('');
+    const { service, loadServiceByIdCliente, updateService, reload, setReload, allServices } = useContext(ServicesContext);
+    const [admStatus, setAdmstatus] = useState('');
+    let tipo = 'ADM'
 
 
     loadServiceByIdCliente(user.id, user.nome);
 
-
+    const statusByAdm = (idService) => {
+        setReload(!reload)
+        let data = {
+            status: admStatus
+        };
+        if (data.status.length > 0) {
+            updateService(idService, data);
+            setAdmstatus('');
+        }
+    };
+    console.log(admStatus)
 
     const clickToCancel = (idService) => {
         setReload(!reload)
@@ -24,7 +35,46 @@ export default function Services() {
             status: 'Cancelado'
         };
         updateService(idService, data);
-    }
+    };
+    if (tipo == 'ADM') {
+        return (
+            <Layout>
+                <S.Container>
+                    <S.ItensTitulo className='titulo'>
+                        <h1>Serviços</h1>
+                    </S.ItensTitulo>
+                    <S.Itens>
+                        <NewService tituloButton={'+ serviços'} />
+                        <S.MyScrool  >
+                            {
+                                Object.values(allServices).map((item, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <h2>Nome :{item.userName}</h2>
+                                            <div className='itensServices'>
+                                                <label>Serviço :<span>{item.tipoDeServico}</span></label>
+                                                <label>Pedido em<span>{item.dataPedido}</span></label>
+                                                <label>Agendado P/ :<span>{item.dataService}</span></label>
+                                                <S.Status Status={item.status.toLowerCase()}  >Status :<span className='status' >{item.status}</span></S.Status>
+                                                <select onChange={(e) => setAdmstatus(e.target.value)} defaultvalue={''}>
+                                                    <option value={''}></option>
+                                                    <option value={'Aberto'}>Aberto</option>
+                                                    <option value={'Cancelado'}>Cancelado</option>
+                                                    <option value={'Andamento'}>Andamento</option>
+                                                    <option value={'Finalizado'}>Finalizado</option>
+                                                </select>
+                                                <S.MyButton onClick={() => statusByAdm(item.id)}>Atualizar</S.MyButton>
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </S.MyScrool>
+                    </S.Itens>
+                </S.Container>
+            </Layout >
+        )
+    };
     return (
         <Layout>
             <S.Container>

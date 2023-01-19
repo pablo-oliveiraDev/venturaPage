@@ -22,7 +22,7 @@ export const ServicesProvider = ({ children }) => {
                 })
         }
         loadServices();
-    }, []);
+    }, [reload]);
 
      function loadServiceByIdCliente(idCliente, userName) {
        setIdCliente(idCliente);
