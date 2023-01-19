@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/Auth';
 import { ServicesContext } from '../../context/Services';
 
 
+
 export default function NewService({ tituloButton }) {
     const [show, setShow] = useState(false);
     const [descricao, setDescricao] = useState('');
@@ -23,6 +24,7 @@ export default function NewService({ tituloButton }) {
     };
     const clickToSave = (e) => {
         e.preventDefault();
+       
         if (descricao !== '' &&
             tipoServico !== '' &&
             dataServico !== '') {
@@ -89,7 +91,7 @@ export default function NewService({ tituloButton }) {
                             <input type='date'
                                 placeholder='DD/MM/YYYY'
                                 value={dataServico}
-                                onChange={(e) => setDataServico(e.target.value)}
+                                onChange={(e) => setDataServico(e.target.value.toString())}
                             />
                         </label>
                         <label className='problema'>Relatar problema :

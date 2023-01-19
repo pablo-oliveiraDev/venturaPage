@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import api from '../Components/services/api';
+import format from 'date-fns/format';
 
 
 
@@ -41,7 +42,7 @@ export const ServicesProvider = ({ children }) => {
         };
     }
     loadServiceId();        
-    }, [idCliente,reload]);
+    }, [idCliente,userName,reload]);
     async function newService(
         idCliente,
         userName,
@@ -58,7 +59,7 @@ export const ServicesProvider = ({ children }) => {
         breveDescricao,
         dataService) {
         await api.post('/servicos', {
-            idCliente, userName, cpf, telefone, cidade, rua, numero, cep, uf, bairro, tipoDeServico, breveDescricao, dataService, status: status[0].toString(), dataPedido: new Date()
+            idCliente, userName,email, cpf, telefone, cidade, rua, numero, cep, uf, bairro, tipoDeServico, breveDescricao, dataService: format(new Date(dataService),'dd/MM/yyyy'), status: status[0].toString(), dataPedido: format(new Date(),'dd/MM/yyyy')
         }).then((res) => {
             if (res.status === 201) {
                 toast.success('Serviço agendado com sucesso!Em breve ligaremos para Confirmar a data e hora que estaremos indo até o local.👍')

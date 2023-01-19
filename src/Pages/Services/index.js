@@ -4,18 +4,20 @@ import * as S from '../../Components/assets/Styles/Pages/services';
 import { AuthContext } from '../../context/Auth';
 import { ServicesContext } from '../../context/Services';
 import NewService from '../../Components/NewService';
+
+
 //import ImgServices from '../../Components/assets/img/'
 
 export default function Services() {
-    const { user,signed} = useContext(AuthContext);
-    const { service, loadServiceByIdCliente, updateService,reload,setReload } = useContext(ServicesContext);
+    const { user, signed } = useContext(AuthContext);
+    const { service, loadServiceByIdCliente, updateService, reload, setReload } = useContext(ServicesContext);
     const [pStatus, setPstatus] = useState('');
 
 
     loadServiceByIdCliente(user.id, user.nome);
 
-       
-    
+
+
     const clickToCancel = (idService) => {
         setReload(!reload)
         let data = {
@@ -30,9 +32,8 @@ export default function Services() {
                     <h1>Serviços</h1>
                 </S.ItensTitulo>
                 <S.Itens>
+                    <NewService tituloButton={'+ serviços'} />
                     <S.MyScrool  >
-                        <NewService tituloButton={'+ serviços'} />
-                        
                         {
                             service.length !== 0 && Object.values(service).map((item, index) => {
                                 return (
@@ -41,10 +42,10 @@ export default function Services() {
                                         <h2>SERVIÇO {index + 1}</h2>
                                         <div className='itensServices'>
                                             <label>Serviço :<span>{item.tipoDeServico}</span></label>
-                                            <label>Nome :<span>{item.userName}</span></label>
-                                            <label>Pedido em :<span>{item.dataService}</span></label>{console.log(item.status)}
+                                            <label>Pedido em<span>{item.dataPedido}</span></label>
+                                            <label>Agendado P/ :<span>{item.dataService}</span></label>
                                             <S.Status Status={item.status.toLowerCase()}  >Status :<span className='status' >{item.status}</span></S.Status>
-                                            <S.MyButton onClick={()=>clickToCancel(item.id)}>Cancelar</S.MyButton>
+                                            <S.MyButton onClick={() => clickToCancel(item.id)}>Cancelar</S.MyButton>
                                         </div>
                                     </div>
                                 );

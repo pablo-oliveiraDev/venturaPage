@@ -31,9 +31,9 @@ export const Itens = styled.div`
 export const MyButton = styled(Button)`
 
 `;
-let status = '';
+
 export const MyScrool = styled.div`
-    ${status = props => props.Status};
+    
   width: 100%;
   height: 700px;
   overflow-y: scroll;
@@ -78,8 +78,9 @@ label span {
     margin-left:1ch;
     width:100%;
     height:100%;
-    
-    padding: 2px;
+    border-top-left-radius:6px;
+    border-bottom-left-radius:6px;
+    padding: 2px 2px;
     
 }
 
