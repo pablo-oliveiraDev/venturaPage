@@ -27,7 +27,7 @@ export default function Services() {
             setAdmstatus('');
         }
     };
-    console.log(admStatus)
+
 
     const clickToCancel = (idService) => {
         setReload(!reload)
@@ -36,6 +36,14 @@ export default function Services() {
         };
         updateService(idService, data);
     };
+    const userPerName = Object.values(allServices).reduce(function (acumulador, user) {
+        if (!acumulador[user.userName]) {
+            acumulador[user.userName]=[];
+        }
+        acumulador[user.userName].push(user);
+        return acumulador;
+    }, {});
+    console.log(userPerName);
     if (tipo == 'ADM') {
         return (
             <Layout>
@@ -47,7 +55,7 @@ export default function Services() {
                         <NewService tituloButton={'+ serviços'} />
                         <S.MyScrool  >
                             {
-                                Object.values(allServices).map((item, index) => {
+                                Object.keys(allServices).map((item, index,arr) => {
                                     return (
                                         <div key={index}>
                                             <h2>Nome :{item.userName}</h2>
