@@ -4,15 +4,17 @@ import * as S from '../../Components/assets/Styles/Pages/services';
 import { AuthContext } from '../../context/Auth';
 import { ServicesContext } from '../../context/Services';
 import NewService from '../../Components/NewService';
+import * as ServIcons from 'react-icons/hi2';
+
 
 
 //import ImgServices from '../../Components/assets/img/'
 
 export default function Services() {
     const { user, signed } = useContext(AuthContext);
-    const { service, loadServiceByIdCliente, updateService, reload, setReload, allServices } = useContext(ServicesContext);
+    const { service, loadServiceByIdCliente, updateService, reload, setReload, allServices, deleteService } = useContext(ServicesContext);
     const [admStatus, setAdmstatus] = useState('');
-    let tipo = 'ADM'
+    let tipo = //'ADM';
 
 
     loadServiceByIdCliente(user.id, user.nome);
@@ -27,7 +29,12 @@ export default function Services() {
             setAdmstatus('');
         }
     };
-
+    const takeDelete = (idService) => {
+        if (idService) {
+            deleteService(idService);
+            setReload(!reload);
+        }
+    }
 
     const clickToCancel = (idService) => {
         setReload(!reload)
@@ -36,15 +43,15 @@ export default function Services() {
         };
         updateService(idService, data);
     };
-    const userPerName = Object.values(allServices).reduce(function (acumulador, user) {
-        if (!acumulador[user.userName]) {
-            acumulador[user.userName]=[];
-        }
-        acumulador[user.userName].push(user);
-        return acumulador;
-    }, {});
-    console.log(userPerName);
-    if (tipo == 'ADM') {
+    // const userPerName = Object.values(allServices).reduce(function (acumulador, user) {
+    //     if (!acumulador[user.userName]) {
+    //         acumulador[user.userName]=[];
+    //     }
+    //     acumulador[user.userName].push(user);
+    //     return acumulador;
+    // }, {});
+    //console.log(userPerName);
+    if (tipo === 'ADM') {
         return (
             <Layout>
                 <S.Container>
@@ -55,7 +62,7 @@ export default function Services() {
                         <NewService tituloButton={'+ serviços'} />
                         <S.MyScrool  >
                             {
-                                Object.keys(allServices).map((item, index,arr) => {
+                                Object.values(allServices).map((item, index, arr) => {
                                     return (
                                         <div key={index}>
                                             <h2>Nome :{item.userName}</h2>
@@ -71,7 +78,10 @@ export default function Services() {
                                                     <option value={'Andamento'}>Andamento</option>
                                                     <option value={'Finalizado'}>Finalizado</option>
                                                 </select>
-                                                <S.MyButton onClick={() => statusByAdm(item.id)}>Atualizar</S.MyButton>
+                                                <div className='boxButtons'>
+                                                    <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' />Atualizar</S.MyButton>
+                                                    <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
+                                                </div>
                                             </div>
                                         </div>
                                     );
@@ -103,7 +113,7 @@ export default function Services() {
                                             <label>Pedido em<span>{item.dataPedido}</span></label>
                                             <label>Agendado P/ :<span>{item.dataService}</span></label>
                                             <S.Status Status={item.status.toLowerCase()}  >Status :<span className='status' >{item.status}</span></S.Status>
-                                            <S.MyButton onClick={() => clickToCancel(item.id)}>Cancelar</S.MyButton>
+                                            <S.MyButton onClick={() => clickToCancel(item.id)} status={item.status.toLowerCase()}><ServIcons.HiOutlineXCircle className='icons' />Cancelar</S.MyButton>
                                         </div>
                                     </div>
                                 );

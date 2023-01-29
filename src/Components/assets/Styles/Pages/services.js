@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Button from "react-bootstrap/esm/Button";
 
+
 export const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -12,6 +13,7 @@ export const ItensTitulo = styled.div`
     margin-top:10px;
     margin-bottom:0;       
 `;
+
 export const Itens = styled.div`
     display: flex;
     justify-content: center;
@@ -29,8 +31,14 @@ export const Itens = styled.div`
 
 `;
 export const MyButton = styled(Button)`
+${props => props.status === 'cancelado' && 'display:none !important'};
+.icons{
+    margin-right:1ch;
+}
+ margin-bottom:5px;
 
 `;
+
 
 export const MyScrool = styled.div`
     
@@ -60,6 +68,18 @@ export const MyScrool = styled.div`
         height:60px;
         background:none;
     }
+}
+div .boxButtons {
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    width:10%;
+    padding:0;
+    margin-bottom:40px;
+    background:none;
+
 }
 
 label {

@@ -79,6 +79,14 @@ export const ServicesProvider = ({ children }) => {
                 }
             })
     }
+    async function deleteService(IdCliente) {
+        await api.delete(`/servicos/${IdCliente}`)
+            .then((res) => {
+                if (res.status === 200) {
+                    toast.success(res.message);
+                }
+            })
+    }
     return (
         <ServicesContext.Provider value={{
             allServices,
@@ -88,6 +96,7 @@ export const ServicesProvider = ({ children }) => {
             newService,
             loadServiceByIdCliente,
             updateService,
+            deleteService,
 
         }}
         >
