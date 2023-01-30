@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/Auth';
 import { ServicesContext } from '../../context/Services';
 import NewService from '../../Components/NewService';
 import * as ServIcons from 'react-icons/hi2';
+import { toast } from 'react-toastify';
 
 
 
@@ -14,10 +15,10 @@ export default function Services() {
     const { user, signed } = useContext(AuthContext);
     const { service, loadServiceByIdCliente, updateService, reload, setReload, allServices, deleteService } = useContext(ServicesContext);
     const [admStatus, setAdmstatus] = useState('');
-    let tipo = //'ADM';
+    let tipo = 'ADM';
 
 
-    loadServiceByIdCliente(user.id, user.nome);
+        loadServiceByIdCliente(user.id, user.nome);
 
     const statusByAdm = (idService) => {
         setReload(!reload)
@@ -27,21 +28,31 @@ export default function Services() {
         if (data.status.length > 0) {
             updateService(idService, data);
             setAdmstatus('');
+            toast.success('Status atualizado com sucesso!');
         }
     };
     const takeDelete = (idService) => {
-        if (idService) {
+        var confirm = window.confirm('Tem certeza que deseja excluir esse serviço?\n Essa operação não poderá ser desfeita!');
+        if (confirm === true) {
             deleteService(idService);
             setReload(!reload);
+            toast.success('Serviço excluido com sucesso!');
+        } else {
+            toast.info('Delete cancelado !')
         }
     }
 
     const clickToCancel = (idService) => {
-        setReload(!reload)
-        let data = {
-            status: 'Cancelado'
-        };
-        updateService(idService, data);
+        var confirm = window.confirm('Tem certeza que deseja cancelar o chamado ?\n Essa operação não poderá ser desfeita!');
+        if (confirm === true) {
+            setReload(!reload);
+            let data = {
+                status: 'Cancelado'
+            };
+            updateService(idService, data);
+        }else{
+            toast.warn('Operação cancelada!')
+        }
     };
     // const userPerName = Object.values(allServices).reduce(function (acumulador, user) {
     //     if (!acumulador[user.userName]) {

@@ -32,6 +32,8 @@ export const Itens = styled.div`
 `;
 export const MyButton = styled(Button)`
 ${props => props.status === 'cancelado' && 'display:none !important'};
+${props => props.status === 'andamento' && 'display:none !important'};
+${props => props.status === 'finalizado' && 'display:none !important'};
 .icons{
     margin-right:1ch;
 }
