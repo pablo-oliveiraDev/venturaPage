@@ -15,7 +15,7 @@ export default function Services() {
     const { user, signed } = useContext(AuthContext);
     const { service, loadServiceByIdCliente, updateService, reload, setReload, allServices, deleteService } = useContext(ServicesContext);
     const [admStatus, setAdmstatus] = useState('');
-    let tipo = 'ADM';
+    let tipo = //'ADM';
 
 
         loadServiceByIdCliente(user.id, user.nome);
@@ -50,7 +50,7 @@ export default function Services() {
                 status: 'Cancelado'
             };
             updateService(idService, data);
-        }else{
+        } else {
             toast.warn('Operação cancelada!')
         }
     };
@@ -93,8 +93,13 @@ export default function Services() {
                                                     <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' />Atualizar</S.MyButton>
                                                     <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
                                                 </div>
+                                                <div className='itenDescricao'>
+                                                    <label>Descrição :<span>{item.breveDescricao}</span></label>
+                                                </div>
+
                                             </div>
                                         </div>
+
                                     );
                                 })
                             }
@@ -124,7 +129,12 @@ export default function Services() {
                                             <label>Pedido em<span>{item.dataPedido}</span></label>
                                             <label>Agendado P/ :<span>{item.dataService}</span></label>
                                             <S.Status Status={item.status.toLowerCase()}  >Status :<span className='status' >{item.status}</span></S.Status>
-                                            <S.MyButton onClick={() => clickToCancel(item.id)} status={item.status.toLowerCase()}><ServIcons.HiOutlineXCircle className='icons' />Cancelar</S.MyButton>
+                                            <div className='boxButtons'>
+                                                <S.MyButton onClick={() => clickToCancel(item.id)} status={item.status.toLowerCase()}><ServIcons.HiOutlineXCircle className='icons' />Cancelar</S.MyButton>
+                                            </div>
+                                            <div className='itenDescricao'>
+                                                <label>Descrição :<span>{item.breveDescricao}</span></label>
+                                            </div>
                                         </div>
                                     </div>
                                 );

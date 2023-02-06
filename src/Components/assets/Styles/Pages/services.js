@@ -10,7 +10,7 @@ export const Container = styled.div`
   
 `;
 export const ItensTitulo = styled.div`
-    margin-top:10px;
+    margin-top:15px;
     margin-bottom:0;       
 `;
 
@@ -58,16 +58,28 @@ export const MyScrool = styled.div`
     margin-bottom:7px;
     width:95%;
     border-radius:15px;
-    height:100px;
+    height:200px;
     text-align:center;
     .itensServices {
-        margin:0;
+        margin-top:-80px;
         display: flex;
         align-items:center;
         justify-content:space-around;
         flex-direction: row;
+        flex-wrap: wrap;
         width:100%;
-        height:60px;
+        height:50px;
+        background:none;
+    }
+    .itenDescricao{
+        margin-top:-110px;
+        display: flex;
+        align-items:center;
+        justify-content:space-around;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width:100%;
+        height:50px;
         background:none;
     }
 }
