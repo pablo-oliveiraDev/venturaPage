@@ -15,7 +15,7 @@ export default function Services() {
     const { user, signed } = useContext(AuthContext);
     const { service, loadServiceByIdCliente, updateService, reload, setReload, allServices, deleteService } = useContext(ServicesContext);
     const [admStatus, setAdmstatus] = useState('');
-    let tipo = //'ADM';
+    let tipo =user.uf;
 
 
         loadServiceByIdCliente(user.id, user.nome);
@@ -61,7 +61,7 @@ export default function Services() {
     //     acumulador[user.userName].push(user);
     //     return acumulador;
     // }, {});
-    //console.log(userPerName);
+    
     if (tipo === 'ADM') {
         return (
             <Layout>

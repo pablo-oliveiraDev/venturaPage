@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-
+import format from 'date-fns/format';
 import { toast } from 'react-toastify';
 import api from '../Components/services/api';
 
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }) => {
             cidade: cidade,
             uf: uf,
             bairro: bairro,
-            data_cadastro: new Date()
+            data_cadastro: format(new Date(),'dd/MM/yyyy')
 
         })
             .then(() => {
