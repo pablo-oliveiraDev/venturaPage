@@ -4,8 +4,11 @@ import * as S from '../../Components/assets/Styles/Pages/services';
 import { AuthContext } from '../../context/Auth';
 import { ServicesContext } from '../../context/Services';
 import NewService from '../../Components/NewService';
+import PrinterModal from '../../Components/PrinterModal';
 import * as ServIcons from 'react-icons/hi2';
 import { toast } from 'react-toastify';
+
+
 
 
 
@@ -15,10 +18,11 @@ export default function Services() {
     const { user, signed } = useContext(AuthContext);
     const { service, loadServiceByIdCliente, updateService, reload, setReload, allServices, deleteService } = useContext(ServicesContext);
     const [admStatus, setAdmstatus] = useState('');
-    let tipo =user.uf;
+    const [showPrint, setShowPrint] = useState(null);
+    let tipo = user.uf;
 
 
-        loadServiceByIdCliente(user.id, user.nome);
+    loadServiceByIdCliente(user.id, user.nome);
 
     const statusByAdm = (idService) => {
         setReload(!reload)
@@ -54,6 +58,15 @@ export default function Services() {
             toast.warn('Operação cancelada!')
         }
     };
+    const takeToPrint = () => {
+        if (showPrint) {
+            setShowPrint(true);
+        }
+
+    }
+
+
+
     // const userPerName = Object.values(allServices).reduce(function (acumulador, user) {
     //     if (!acumulador[user.userName]) {
     //         acumulador[user.userName]=[];
@@ -61,7 +74,7 @@ export default function Services() {
     //     acumulador[user.userName].push(user);
     //     return acumulador;
     // }, {});
-    
+
     if (tipo === 'ADM') {
         return (
             <Layout>
@@ -75,14 +88,15 @@ export default function Services() {
                             {
                                 Object.values(allServices).map((item, index, arr) => {
                                     return (
-                                        <div key={index}>
+                                        <div key={index} >
+
                                             <h2>Nome :{item.userName}</h2>
                                             <div className='itensServices'>
                                                 <label>Serviço :<span>{item.tipoDeServico}</span></label>
                                                 <label>Pedido em<span>{item.dataPedido}</span></label>
                                                 <label>Agendado P/ :<span>{item.dataService}</span></label>
                                                 <S.Status Status={item.status.toLowerCase()}  >Status :<span className='status' >{item.status}</span></S.Status>
-                                                <select onChange={(e) => setAdmstatus(e.target.value)} defaultvalue={''}>
+                                                <select onChange={(e) => setAdmstatus(e.target.value)} default={''}>
                                                     <option value={''}></option>
                                                     <option value={'Aberto'}>Aberto</option>
                                                     <option value={'Cancelado'}>Cancelado</option>
@@ -92,9 +106,13 @@ export default function Services() {
                                                 <div className='boxButtons'>
                                                     <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' />Atualizar</S.MyButton>
                                                     <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
+                                                    <S.MyButton onClick={e => takeToPrint()}>+ infor</S.MyButton>
+                                                    <PrinterModal showPrint={showPrint}
+                                                        setShowPrint={setShowPrint} />
                                                 </div>
                                                 <div className='itenDescricao'>
                                                     <label>Descrição :<span>{item.breveDescricao}</span></label>
+
                                                 </div>
 
                                             </div>
