@@ -8,13 +8,13 @@ import { useReactToPrint } from 'react-to-print';
 
 
 
-export default function PrinterModal({ showPrint, setShowPrint }) {
+export default function PrinterModal({ showPrint, setShowPrint,printService }) {
     const [show, setShow] = useState(true);
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
         onAfterPrint: () => { toast.success('Documento impresso com sucesso!👍🏼'); handleClose() },
-        onBeforeGetContent: () => < button style={{ display: 'none' }} />
+        pageStyle:()=><styles></styles>
     });
     let componentRef = useRef(null);
     const handleShow = () => {
@@ -24,21 +24,23 @@ export default function PrinterModal({ showPrint, setShowPrint }) {
         setShow(false);
         setShowPrint(false);
     };
-   
+
     if (showPrint) {
-       
+        console.log('renderizou')
         return (
             <>
 
                 <S.MyModal show={show} onHide={handleClose}>
                     <S.MyModal.Header className='Header'>
-                        <S.MyModal.Title className='Title'><IconsFc.FcReadingEbook size={28} /> LOGIN</S.MyModal.Title>
+                        <S.MyModal.Title className='Title'><IconsFc.FcReadingEbook size={28} /> DADOS PARA IMPRESSAO</S.MyModal.Title>
                     </S.MyModal.Header>
                     <S.MyModal.Body className='Body'>
 
                         <div className='containerInput' ref={componentRef}>
 
-                            <h2>Teste de impressao</h2>
+                            <h2>Teste de impressao</h2><br />
+                            <h3>{printService.userName}</h3>
+                            <h3>{printService.rua}</h3>
 
                         </div>
 
@@ -56,10 +58,4 @@ export default function PrinterModal({ showPrint, setShowPrint }) {
 
         );
     }
-
-
-
-
-
-
 }

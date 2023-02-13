@@ -59,10 +59,7 @@ export default function Services() {
         }
     };
     const takeToPrint = () => {
-        if (showPrint) {
-            setShowPrint(true);
-        }
-
+        setShowPrint(true);
     }
 
 
@@ -108,7 +105,8 @@ export default function Services() {
                                                     <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
                                                     <S.MyButton onClick={e => takeToPrint()}>+ infor</S.MyButton>
                                                     <PrinterModal showPrint={showPrint}
-                                                        setShowPrint={setShowPrint} />
+                                                        setShowPrint={setShowPrint}
+                                                        printService={item} />
                                                 </div>
                                                 <div className='itenDescricao'>
                                                     <label>Descrição :<span>{item.breveDescricao}</span></label>
