@@ -8,13 +8,25 @@ import { useReactToPrint } from 'react-to-print';
 
 
 
-export default function PrinterModal({ showPrint, setShowPrint,printService }) {
+export default function PrinterModal({ showPrint, setShowPrint, printService }) {
     const [show, setShow] = useState(true);
+    const divStyle = {
+        'text-align': 'center',
+        'margin': '30px',
+    };
+    const h2Style = {
+        'text-align': 'left',
+        'margin': '0px',
+    };
+    const spanStyle={
+        'font-weight':'100',
+    }
+
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
         onAfterPrint: () => { toast.success('Documento impresso com sucesso!👍🏼'); handleClose() },
-        pageStyle:()=><styles></styles>
+
     });
     let componentRef = useRef(null);
     const handleShow = () => {
@@ -36,11 +48,14 @@ export default function PrinterModal({ showPrint, setShowPrint,printService }) {
                     </S.MyModal.Header>
                     <S.MyModal.Body className='Body'>
 
-                        <div className='containerInput' ref={componentRef}>
+                        <div className='containerInput' ref={componentRef} style={divStyle} >
 
-                            <h2>Teste de impressao</h2><br />
-                            <h3>{printService.userName}</h3>
-                            <h3>{printService.rua}</h3>
+                            <h2>Impressao de chamado</h2><hr />
+                            <h3 style={h2Style}>{`Nome : ${printService.userName} `}</h3>
+                            <h3 style={h2Style}>{`Endereço : Rua ${printService.rua} Bairro ${printService.bairro} Nº ${printService.numero} `}
+                            </h3>
+                            <h3 style={h2Style}>{`Cidade: ${printService.cidade} `}</h3>
+                            <h3 style={h2Style}>Tipo de serviço: <span style={spanStyle}>{printService.tipoDeServico}</span></h3>
 
                         </div>
 

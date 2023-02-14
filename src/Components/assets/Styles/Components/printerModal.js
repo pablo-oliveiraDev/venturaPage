@@ -107,6 +107,7 @@ export const MyModal = styled(Modal)`
         flex-direction:column;
         align-items:flex-end;
         justify-content:center;
+       
     }
     
 `;
