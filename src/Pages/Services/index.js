@@ -4,7 +4,7 @@ import * as S from '../../Components/assets/Styles/Pages/services';
 import { AuthContext } from '../../context/Auth';
 import { ServicesContext } from '../../context/Services';
 import NewService from '../../Components/NewService';
-import PrinterModal from '../../Components/PrinterModal';
+import { PrinterModal } from '../../Components/PrinterModal';
 import * as ServIcons from 'react-icons/hi2';
 import { toast } from 'react-toastify';
 
@@ -58,9 +58,7 @@ export default function Services() {
             toast.warn('Operação cancelada!')
         }
     };
-    const takeToPrint = () => {
-        setShowPrint(true);
-    }
+    
 
 
 
@@ -103,10 +101,11 @@ export default function Services() {
                                                 <div className='boxButtons'>
                                                     <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' />Atualizar</S.MyButton>
                                                     <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
-                                                    <S.MyButton onClick={e => takeToPrint()}>+ infor</S.MyButton>
+                                                   
                                                     <PrinterModal showPrint={showPrint}
                                                         setShowPrint={setShowPrint}
-                                                        printService={item} />
+                                                        printService={item}
+                                                        tituloButton={'+ infor'} />
                                                 </div>
                                                 <div className='itenDescricao'>
                                                     <label>Descrição :<span>{item.breveDescricao}</span></label>
@@ -135,21 +134,21 @@ export default function Services() {
                     <NewService tituloButton={'+ serviços'} />
                     <S.MyScrool  >
                         {
-                            service.length !== 0 && Object.values(service).map((item, index) => {
+                            service.length !== 0 && Object.values(service).map((itemUser, index) => {
                                 return (
 
                                     <div key={index}>
                                         <h2>SERVIÇO {index + 1}</h2>
                                         <div className='itensServices'>
-                                            <label>Serviço :<span>{item.tipoDeServico}</span></label>
-                                            <label>Pedido em<span>{item.dataPedido}</span></label>
-                                            <label>Agendado P/ :<span>{item.dataService}</span></label>
-                                            <S.Status Status={item.status.toLowerCase()}  >Status :<span className='status' >{item.status}</span></S.Status>
+                                            <label>Serviço :<span>{itemUser.tipoDeServico}</span></label>
+                                            <label>Pedido em<span>{itemUser.dataPedido}</span></label>
+                                            <label>Agendado P/ :<span>{itemUser.dataService}</span></label>
+                                            <S.Status Status={itemUser.status.toLowerCase()}  >Status :<span className='status' >{itemUser.status}</span></S.Status>
                                             <div className='boxButtons'>
-                                                <S.MyButton onClick={() => clickToCancel(item.id)} status={item.status.toLowerCase()}><ServIcons.HiOutlineXCircle className='icons' />Cancelar</S.MyButton>
+                                                <S.MyButton onClick={() => clickToCancel(itemUser.id)} status={itemUser.status.toLowerCase()}><ServIcons.HiOutlineXCircle className='icons' />Cancelar</S.MyButton>
                                             </div>
                                             <div className='itenDescricao'>
-                                                <label>Descrição :<span>{item.breveDescricao}</span></label>
+                                                <label>Descrição :<span>{itemUser.breveDescricao}</span></label>
                                             </div>
                                         </div>
                                     </div>

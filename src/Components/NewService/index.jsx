@@ -30,7 +30,7 @@ export default function NewService({ tituloButton }) {
             dataServico !== '') {
             newService(
                 user.id,
-                user.nome,
+                user.nome+' '+user.sobrenome,
                 user.email,
                 user.cpf,
                 user.telefone,
@@ -39,7 +39,7 @@ export default function NewService({ tituloButton }) {
                 user.numero,
                 user.cep,
                 user.uf,
-                user.meuBairro,
+                user.bairro,
                 tipoServico,
                 descricao,
                 dataServico
