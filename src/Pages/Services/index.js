@@ -58,7 +58,7 @@ export default function Services() {
             toast.warn('Operação cancelada!')
         }
     };
-    
+
 
 
 
@@ -89,7 +89,7 @@ export default function Services() {
                                             <div className='itensServices'>
                                                 <label>Serviço :<span>{item.tipoDeServico}</span></label>
                                                 <label>Pedido em<span>{item.dataPedido}</span></label>
-                                                <label>Agendado P/ :<span>{item.dataService}</span></label>
+
                                                 <S.Status Status={item.status.toLowerCase()}  >Status :<span className='status' >{item.status}</span></S.Status>
                                                 <select onChange={(e) => setAdmstatus(e.target.value)} default={''}>
                                                     <option value={''}></option>
@@ -101,13 +101,15 @@ export default function Services() {
                                                 <div className='boxButtons'>
                                                     <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' />Atualizar</S.MyButton>
                                                     <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
-                                                   
+
                                                     <PrinterModal showPrint={showPrint}
                                                         setShowPrint={setShowPrint}
                                                         printService={item}
                                                         tituloButton={'+ infor'} />
                                                 </div>
                                                 <div className='itenDescricao'>
+                                                    <label>Agendado P/ :<span>{item.dataService}</span></label>
+                                                    <label>Contato :<span>{item.telefone}</span></label>
                                                     <label>Descrição :<span>{item.breveDescricao}</span></label>
 
                                                 </div>

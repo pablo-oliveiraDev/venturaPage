@@ -57,7 +57,7 @@ export const MyModal = styled(Modal)`
     .Body,
     .Footer,
     .Header {
-        background-image: url(flocoDeNeve.png);
+       
         background-size:80px;
         background-repeat:no-repeat;
         background-position:right center;
@@ -105,7 +105,7 @@ export const MyModal = styled(Modal)`
         
         display: flex;
         flex-direction:column;
-        align-items:flex-end;
+        align-items:center;
         justify-content:center;
        
     }

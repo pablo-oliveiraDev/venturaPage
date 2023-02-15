@@ -75,7 +75,8 @@ export const MyScrool = styled.div`
         margin-top:-110px;
         display: flex;
         align-items:center;
-        justify-content:space-around;
+        justify-content:space-evenly;
+        margin-left:40px;
         flex-direction: row;
         flex-wrap: wrap;
         width:100%;
