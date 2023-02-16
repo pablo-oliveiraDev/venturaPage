@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useRef } from 'react';
 import * as IconsFc from 'react-icons/fc';
+import * as IconsSL from 'react-icons/sl';
 import * as S from '../assets/Styles/Components/printerModal';
 //import { AuthContext } from '../../context/Auth';
 import { toast } from 'react-toastify';
@@ -84,7 +85,7 @@ export const PrinterModal = ({ showPrint, setShowPrint, printService, tituloButt
                         SAIR
                     </S.MyButton>
                     <S.MyButton className='btn-save' variant="primary" onClick={handlePrint}>
-                        Imprimir
+                        <IconsSL.SlPrinter size={25}/>
                     </S.MyButton>
                 </S.MyModal.Footer>
             </S.MyModal>
