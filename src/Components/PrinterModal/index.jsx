@@ -38,7 +38,9 @@ export const PrinterModal = ({ showPrint, setShowPrint, printService, tituloButt
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
         onAfterPrint: () => { toast.success('Documento impresso com sucesso!👍🏼'); handleClose() },
-
+        onBeforePrint:()=>{
+            
+        }
     });
     let componentRef = useRef(null);
     const handleShow = () => {
@@ -75,7 +77,10 @@ export const PrinterModal = ({ showPrint, setShowPrint, printService, tituloButt
                             Contato: <span style={spanStyle}>{printService.telefone} </span>
                         </h3>
                         <h3 style={h2Style}>Tipo de serviço: <span style={spanStyle}>{printService.tipoDeServico}</span></h3>
+                        <div >
+                            <span>Ao assinar que declaro que foi efetuado a visita pelo tecnico da refrigeração Ventura</span>
                         <div style={assCliente}>Assinatura do cliente</div>
+                        </div>
                         <hr />
                     </div>
 

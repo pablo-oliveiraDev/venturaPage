@@ -7,6 +7,7 @@ import ImgHome2 from '../../Components/assets/img/imgHome/manutAr.jpg';
 
 
 export default function Home() {
+
   return (
     <Layout>
       <h1>É uma Honra atende-los com honestidade e dignidade! </h1>
