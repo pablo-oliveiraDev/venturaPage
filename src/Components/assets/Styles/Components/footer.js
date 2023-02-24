@@ -12,7 +12,9 @@ export const MyContainer = styled(Container)`
   height: 40px;
 
   .brand {
+    display: flex;
     float: flex-start;
+    flex-direction: row;
     font-size: 25px;
     font-weight: 700;
   }
@@ -26,7 +28,7 @@ export const MyContainer = styled(Container)`
   }
   @media(max-width:688px){
     .brand {
-      display:none;
+      //display:none;
     }
   }
   @media(max-width:414px){
@@ -45,15 +47,18 @@ export const MyNavbar = styled(Navbar)`
   span {
   }
   span .spanNome {
-    font-weight: 500;
-    font-size: 18px;
+    font-size: 25px;
+    font-weight: 700;
     color: #fff;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-left: 1ch;
   }
- 
+  @media(max-width:414px){
+    flex-direction: column;
+  }
 `;
 
 export const Header = styled.div`

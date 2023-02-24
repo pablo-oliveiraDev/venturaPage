@@ -16,7 +16,8 @@ const GlobalStyle = createGlobalStyle`
    button{
       cursor: pointer;
       transition:ease-in-out .15s;
-      
+      text-decoration:none;
+      list-style-type: style none;
    }
    
 
@@ -32,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
       background:#fff;
       width:100%;
       height:100%;
+      overflow:hidden;
      
    }
 `;
