@@ -3,10 +3,14 @@ import styled from 'styled-components';
 
 
 export const MySideMenu = styled.div`
-height:800px;
+height:1200px;
 width: 380px;
 background-color: rgba(4,4,4,0.1);
 
+@media (max-width:1024px ) {
+    width:120px;
+   
+  }
 .sidebar {
    
     position: fixed;
@@ -32,6 +36,7 @@ background-color: rgba(4,4,4,0.1);
     &__menu {
         
         position: relative;
+        
 
         &__item {
             height:3rem;
@@ -45,6 +50,7 @@ background-color: rgba(4,4,4,0.1);
             color: #555555;
             transition: color 0.3s ease-in-out;
             z-index:99;
+            
 
             &.active {
                 color: #fff;
@@ -70,6 +76,31 @@ background-color: rgba(4,4,4,0.1);
             z-index: -99;
             transform: translateX(-50%);
             transition: 0.3s ease-in-out;
+        }
+        @media (max-width:1024px ) {
+        .sidebar{
+         
+        }
+        .sidebar__menu{
+          display: none;
+        }
+        .sidebar__menu__item__icon{
+          margin:2px;
+          size: 1.75rem;
+          
+        }
+        .sidebar__menu__item{
+         padding:3rem 2rem;
+          
+        }
+          .sidebar__menu__item__text {
+            display: none;
+          }
+          .sidebar__menu__indicator{
+            width: calc(100% - 30px);
+            
+            
+          }
         }
     }
 }

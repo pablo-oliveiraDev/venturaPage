@@ -32,7 +32,7 @@ const sidebarNavItems = [
         display: <CadastroModal tituloButton={'Cadastro'} />,
         icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
 
-        section: 'cadastro',
+        section: '/cadastro',
         new: 5,
 
     },
