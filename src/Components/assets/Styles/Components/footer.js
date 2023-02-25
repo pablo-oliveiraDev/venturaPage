@@ -10,13 +10,16 @@ export const MyContainer = styled(Container)`
   margin-right: 0;
   margin-top: 0px;
   height: 40px;
+ 
 
   .brand {
     display: flex;
     float: flex-start;
     flex-direction: row;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
+    align-items:center;
+    justify-content: center;
   }
 
   button {
@@ -26,13 +29,27 @@ export const MyContainer = styled(Container)`
     background: none;
     border: none;
   }
+   @media(max-width:1024px){
+    margin-left: 300px;
+    align-items:center;
+    justify-content: center;
+   }
   @media(max-width:688px){
     .brand {
-      //display:none;
+    margin-left:-150px;
+      
     }
   }
   @media(max-width:414px){
       margin-left:100px;
+      .brand {
+        margin-top:10px;
+        margin-left:40px;
+      flex-direction: column;
+      align-items:center;
+      justify-content: space-between;
+      
+    }
     }
 `;
 export const MyNav = styled(Nav)``;
@@ -55,9 +72,20 @@ export const MyNavbar = styled(Navbar)`
     align-items: center;
     justify-content: center;
     margin-left: 1ch;
+    margin-right: 1ch;
+   
+    :hover{
+      font-size:30px;
+    }
   }
   @media(max-width:414px){
     flex-direction: column;
+    span .spanNome {
+      align-items: center;
+      justify-content: center;
+     margin-top: -10px;
+     margin-bottom:8px;
+    }
   }
 `;
 

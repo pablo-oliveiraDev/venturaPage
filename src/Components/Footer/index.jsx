@@ -26,7 +26,7 @@ export default function Footer() {
     <>
       <S.MyNavbar bg="primary" variant="dark" fixed="bottom">
         <S.MyContainer>
-          <S.MyNavbar.Brand className="brand">DESIGNER BY PROJECT<a target='_blank' href="https://www.google.com" className='spanNome'>PABLO</a> </S.MyNavbar.Brand>
+          <S.MyNavbar.Brand className="brand">DESIGNER BY PROJECT <a target='_blank' href="https://linktr.ee/pabloliver.ferreira" className='spanNome' rel="noreferrer" >👉🏼 PABLO 👈🏼</a></S.MyNavbar.Brand>
           {curPath === "principal" && (
             <S.Header>
               <S.MySpan>Pages</S.MySpan>

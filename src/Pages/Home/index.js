@@ -10,8 +10,9 @@ export default function Home() {
 
   return (
     <Layout>
-      <h1>É uma Honra atende-los com honestidade e dignidade! </h1>
+      
       <S.MyContainer>
+        <h1 className='titulo'>É uma Honra atende-los com honestidade e dignidade! </h1>
         <S.MyCarousel>
           <S.MyCarousel.Item className='imgItem'>
             <img

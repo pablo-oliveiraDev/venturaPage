@@ -9,11 +9,12 @@ import {
     Legend,
     ComposedChart,
     Area,
-    Bar
+    Bar,
+    ResponsiveContainer
 } from 'recharts';
 import { ServicesContext } from '../../context/Services';
 import { AuthContext } from '../../context/Auth';
-import format from 'date-fns/format';
+
 
 
 let data = ''
@@ -72,24 +73,30 @@ const ComposeGraphics = () => {
         ]
     )
 
-return (
-    <S.DivGrafico>
+    return (
+        <S.DivGrafico>
 
-        <h1 style={{ margin: '20px' }}>Serviços</h1>
-        <ComposedChart width={730} height={250} data={data[0]} margin={{ left: 0 }}>
-            <XAxis dataKey='name' />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <CartesianGrid stroke="#f5f5f5" />
-            {/* <Legend width={100} wrapperStyle={{ top: 40, right: 20, backgroundColor: '#f5f5f590', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }} /> */}
-            <Area type="monotone" dataKey="ABERTO" fill="#8884d8" stroke="#8884d8" />
-            <Bar dataKey="CONCLUIDO" barSize={20} fill="#413ea0" />
-            <Line type="monotone" dataKey="ANDAMENTO" stroke="#ff7300" />
-            <Line type="monotone" dataKey="CANCELADO" stroke="#ff1e00" />
-        </ComposedChart>
-    </S.DivGrafico>
-);
+            <h1 style={{ margin: '20px' }}>Serviços</h1>
+
+            <ComposedChart
+                width={730} height={250}
+                data={data[0]} margin={{ left: 0 }}
+                className='composedChart'
+            >
+                <XAxis dataKey='name' />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <CartesianGrid stroke="#f5f5f5" />
+                {/* <Legend width={100} wrapperStyle={{ top: 40, right: 20, backgroundColor: '#f5f5f590', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }} /> */}
+                <Area type="monotone" dataKey="ABERTO" fill="#8884d8" stroke="#8884d8" />
+                <Bar dataKey="CONCLUIDO" barSize={20} fill="#413ea0" />
+                <Line type="monotone" dataKey="ANDAMENTO" stroke="#ff7300" />
+                <Line type="monotone" dataKey="CANCELADO" stroke="#ff1e00" />
+            </ComposedChart>
+
+        </S.DivGrafico>
+    );
 }
 
 

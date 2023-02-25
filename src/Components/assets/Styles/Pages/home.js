@@ -4,9 +4,36 @@ import Carousel from 'react-bootstrap/Carousel';
 
 export const MyContainer = styled('div')`
     height:600px;
+    .titulo{
+        text-align:center;
+        margin-top:10px;
+    }
+    @media(max-width:1024px){
+        .titulo {
+        margin-top:200px;
+        margin-bottom:0;
+        text-align:center;
+     }
+      @media(max-width:688px){
+        .titulo {
+            margin-top:100px;
+        }
+        
+      }
+       @media(max-width:360px){
+        .titulo {
+            margin-top:50px;
+        }        
+      }
+      @media(max-height:667px){
+            .titulo {
+            margin-top:20px;
+        }
+         }
+   }
 `;
 export const MyCarousel = styled(Carousel)`
-   .imgItem{
+   .imgItem img{
     height:700px;
     
    }
@@ -16,6 +43,24 @@ export const MyCarousel = styled(Carousel)`
     z-index:99;
    
    }
+   @media(max-width:1024px){
+    margin-top:20px;     
+   }
+    @media(max-width:414px){
+        .imgItem{
+            height:300px;
+        }
+     }
+     @media(max-width:375px){
+        .imgItem{
+            height:300px;
+        }
+         @media(max-height:667px){
+            .imgItem{
+            height:250px;
+        }
+         }
+    }
 `;
   
 
