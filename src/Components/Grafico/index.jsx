@@ -10,7 +10,7 @@ import {
     ComposedChart,
     Area,
     Bar,
-    ResponsiveContainer
+   
 } from 'recharts';
 import { ServicesContext } from '../../context/Services';
 import { AuthContext } from '../../context/Auth';

@@ -4,7 +4,8 @@ import * as S from '../../Components/assets/Styles/Pages/services';
 import { AuthContext } from '../../context/Auth';
 import { ServicesContext } from '../../context/Services';
 import NewService from '../../Components/NewService';
-import { PrinterModal } from '../../Components/PrinterModal';
+//import { PrinterModal } from '../../Components/PrinterModal/talvez';
+import TesteClass  from '../../Components/PrinterModal';
 import * as ServIcons from 'react-icons/hi2';
 import { toast } from 'react-toastify';
 
@@ -101,11 +102,9 @@ export default function Services() {
                                                 <div className='boxButtons'>
                                                     <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' />Atualizar</S.MyButton>
                                                     <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
+                                                    <TesteClass printService={item} />
+                                                    
 
-                                                    <PrinterModal showPrint={showPrint}
-                                                        setShowPrint={setShowPrint}
-                                                        printService={item}
-                                                        tituloButton={'+ infor'} />
                                                 </div>
                                                 <div className='itenDescricao'>
                                                     <label>Agendado P/ :<span>{item.dataService}</span></label>

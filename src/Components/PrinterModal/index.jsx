@@ -1,99 +1,47 @@
-import * as React from 'react';
-import { useState, useRef } from 'react';
-import * as IconsFc from 'react-icons/fc';
+import React, { Component } from 'react';
+import ReactToPrint from 'react-to-print';
+import Button from 'react-bootstrap/Button';
 import * as IconsSL from 'react-icons/sl';
-import * as S from '../assets/Styles/Components/printerModal';
-//import { AuthContext } from '../../context/Auth';
-import { toast } from 'react-toastify';
-import { useReactToPrint } from 'react-to-print';
+import AreaPrint from './talvez'
 
 
-export const PrinterModal = ({ showPrint, setShowPrint, printService, tituloButton }) => {
-    const [show, setShow] = useState(false);
+export default class TesteClass extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { myDisplay: 'none' }
 
-    const divStyle = {
-        'text-align': 'center',
-        'margin': '30px',
-        
-    };
-    const h2Style = {
-        'text-align': 'left',
-        'margin': '0px',
-        'font-size': '25px',
-        'margin-botton':'20px',
-    };
-    const spanStyle = {
-        'font-weight': '150',
-        'margin-right': '1ch',
-    }
-    const assCliente = {
-        'border-top': '1px solid',
-        'margin-top': '70px',
-        'font-size': '25px',
-        'width': '80%',
-        'margin-left': '80px',
     }
 
+    render() {
 
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-        onAfterPrint: () => { toast.success('Documento impresso com sucesso!👍🏼'); handleClose() },
-        onBeforePrint:()=>{
-            
-        }
-    });
-    let componentRef = useRef(null);
-    const handleShow = () => {
-        setShow(true);
-    };
-    const handleClose = () => {
-        setShow(false);
-        setShowPrint(false);
-    };
 
-    return (
-        <>
-            <S.MyButton variant='primary' onClick={handleShow}>
-                {tituloButton}
-            </S.MyButton>
-            <S.MyModal show={show} onHide={handleClose}>
-                <S.MyModal.Header className='Header'>
-                    <S.MyModal.Title className='Title'><IconsFc.FcReadingEbook size={28} /> DADOS PARA IMPRESSAO</S.MyModal.Title>
-                </S.MyModal.Header>
-                <S.MyModal.Body className='Body'>
 
-                    <div className='containerInput' ref={componentRef} style={divStyle} >
+        return (
+            <>
+                <ReactToPrint
+                    trigger={() => {
+                       
+                        return <Button variant='primary' ><IconsSL.SlPrinter size={25} /></Button>;
+                    }}
+                    onafterprint= {() => this.setState(state => ({myDisplay: 'none' }))}
+                    onBeforePrint={() => { this.setState(state => ({ myDisplay: '' })) }}
+                    content={() => this.componentRef}
+                />
+                <div ref={el => (this.componentRef = el)}
+                style={{background:'none'}}
+                >
+                     <AreaPrint
 
-                        <h2>Impressao de chamado</h2><hr />
-                        <h3 style={h2Style}>Nome: <span style={spanStyle}>{printService.userName}
-                        </span>   Pedido: <span style={spanStyle}>{printService.dataPedido}
-                            </span><br /> Agendado: <span style={spanStyle}>{printService.dataService}</span>
-                            Bairro: <span style={spanStyle}>{printService.bairro}</span>
-                        </h3>
-                        <h3 style={h2Style}>Endereço : <span style={spanStyle}>{`Rua ${printService.rua}`}</span>Nº: <span style={spanStyle}>{printService.numero} </span>
-                        </h3>
-                        <h3 style={h2Style}>
-                            Cidade: <span style={spanStyle}>{printService.cidade} </span>
-                            Contato: <span style={spanStyle}>{printService.telefone} </span>
-                        </h3>
-                        <h3 style={h2Style}>Tipo de serviço: <span style={spanStyle}>{printService.tipoDeServico}</span></h3>
-                        <div >
-                            <span>Ao assinar que declaro que foi efetuado a visita pelo tecnico da refrigeração Ventura</span>
-                        <div style={assCliente}>Assinatura do cliente</div>
-                        </div>
-                        <hr />
-                    </div>
+                        printService={this.props.printService}
 
-                </S.MyModal.Body>
-                <S.MyModal.Footer className='Footer'>
-                    <S.MyButton className='btn-fechar' variant="secondary" onClick={handleClose}>
-                        SAIR
-                    </S.MyButton>
-                    <S.MyButton className='btn-save' variant="primary" onClick={handlePrint}>
-                        <IconsSL.SlPrinter size={25}/>
-                    </S.MyButton>
-                </S.MyModal.Footer>
-            </S.MyModal>
-        </>
-    );
+                    />
+                </div>
+
+
+
+
+            </>
+
+        )
+    }
 }
