@@ -12,11 +12,19 @@ background-color: rgba(4,4,4,0.1);
     height:1300px;
    
   }
-  @media (max-width:375px ) {
-    height:815px;
-  }
    @media (max-height:667px) {
     height:600px;
+  }
+   
+  @media (max-width:414px ) {
+ 
+    width:120px;
+    .sidebar__logo{
+      display:none;
+    }
+  }
+   @media (max-width:375px ) {
+    height:815px;
   }
 .sidebar {
    
@@ -117,6 +125,8 @@ background-color: rgba(4,4,4,0.1);
           }
         }
          @media (max-width:414px ) {
+          
+          
           .sidebar__menu__indicator{            
             width: calc(130% - 30px);                       
           }

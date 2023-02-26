@@ -79,7 +79,7 @@ export default function Services() {
                         <h1>Serviços</h1>
                     </S.ItensTitulo>
                     <S.Itens>
-                        <NewService tituloButton={'+ serviços'} />
+                       
                         <S.MyScrool  >
                             {
                                 Object.values(allServices).map((item, index, arr) => {
@@ -100,10 +100,9 @@ export default function Services() {
                                                     <option value={'Finalizado'}>Finalizado</option>
                                                 </select>
                                                 <div className='boxButtons'>
-                                                    <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' />Atualizar</S.MyButton>
-                                                    <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' />Deletar</S.MyButton>
-                                                    <TesteClass printService={item} />
-                                                    
+                                                    <S.MyButton onClick={() => statusByAdm(item.id)}><ServIcons.HiOutlineCog8Tooth className='icons' /><span>Atualizar</span></S.MyButton>
+                                                    <S.MyButton variant='danger' onClick={() => takeDelete(item.id)}><ServIcons.HiOutlineTrash className='icons' /><span>Deletar</span></S.MyButton>
+                                                    <TesteClass printService={item} />                                                   
 
                                                 </div>
                                                 <div className='itenDescricao'>

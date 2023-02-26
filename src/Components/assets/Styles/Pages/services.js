@@ -7,10 +7,14 @@ export const Container = styled.div`
     justify-content: center;
     align-items:center;
     flex-direction: column;
-  
+ 
+    @media (max-width:414px ) {     
+        width:200px;
+    
+  }
 `;
 export const ItensTitulo = styled.div`
-    margin-top:15px;
+    margin-top:10px;
     margin-bottom:0;       
 `;
 
@@ -19,26 +23,46 @@ export const Itens = styled.div`
     justify-content: center;
     align-items:center;
     flex-direction: column;
-    
+   
     width:1300px;
     height:700px;
-    margin-top:0;
+    margin-top:20px;
     .titulo{
         margin:0;
         width:100%;
         height:100%;
     }
-
+    h2 {
+        margin-top:20px;
+    }
+    @media(max-width:414px){
+        flex-direction:row;
+    }
 `;
 export const MyButton = styled(Button)`
 ${props => props.status === 'cancelado' && 'display:none !important'};
 ${props => props.status === 'andamento' && 'display:none !important'};
 ${props => props.status === 'finalizado' && 'display:none !important'};
+margin-bottom:5px;
 .icons{
     margin-right:1ch;
 }
- margin-bottom:5px;
-
+ 
+ @media(max-width:414px){
+    
+     :nth-child(n+1){
+        margin-right:1ch;
+     }
+   
+   
+    span{
+        display:none;
+    }
+    .icons{
+        margin: 0;
+        font-size:30px;
+    }
+ }
 `;
 
 
@@ -60,6 +84,7 @@ export const MyScrool = styled.div`
     border-radius:15px;
     height:200px;
     text-align:center;
+  
     .itensServices {
         margin-top:-80px;
         display: flex;
@@ -83,7 +108,7 @@ export const MyScrool = styled.div`
         height:50px;
         background:none;
     }
-}
+
 div .boxButtons {
     display: flex;
     flex-direction:column;
@@ -118,7 +143,7 @@ label span {
     padding: 2px 2px;
     
 }
-
+}
  @media(max-width:1024px){
   margin-top:-570px;
   height:600px;
@@ -128,9 +153,49 @@ label span {
   height:600px;
  }
  @media(max-width:414px){
-  margin-left:15px;
-  margin-top:-500px;
-  }
+    margin-left:110px;
+    margin-top:-80px;
+    width:300px;
+    height:600px;
+ 
+  div{
+     height:500px;
+     flex-direction:column;
+      
+        .itensServices{
+            display:flex;
+            flex-direction:column;
+            justify-content:space-around;
+            flex-wrap:nowrap;
+           margin-top:-200px;
+            //margin-bottom:20px;
+
+        }
+        label{
+            margin-top:15px;
+            flex-direction:column;
+            margin-bottom:20px;
+        }
+        label span{
+             margin-top:-700px;
+            flex-direction:column;
+            margin-bottom:10px;
+             
+        }
+        .itensServices  label{
+            margin-top:15px;
+            flex-direction:column;
+            
+        }
+    }
+    div .boxButtons{
+        width:250px !important;
+              margin-top:00px;      
+          flex-direction:row !important;
+           position:static;
+           top:500px;
+        }
+}
  @media(max-width:375px){
   margin-top:-700px;
   height:480px;
@@ -139,6 +204,7 @@ label span {
   margin-top:-850px;
   height:300px;
   }
+  
   `;
 export const Status = styled.label`
     z-index:2;
@@ -146,9 +212,7 @@ export const Status = styled.label`
     padding: 0;
     border-radius: 5px;
     margin-left:10px;
-    padding-left:5px;
-    
-    
+    padding-left:5px;   
     
   .status {
     margin:3px 3px;
@@ -160,4 +224,16 @@ export const Status = styled.label`
     ${props => props.Status === 'finalizado' && 'background:#00FF00;color:#fff'};
     
 }
+
+    @media(max-width:414px){
+        position:inherit;
+        bottom:-300px;
+        
+         .status {   
+        position:static;
+        bottom:-300px;         
+            //margin-top:100px; 
+         }
+      
+    }
   `;
