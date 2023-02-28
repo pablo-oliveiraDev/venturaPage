@@ -18,13 +18,16 @@ background-color: rgba(4,4,4,0.1);
    
   @media (max-width:414px ) {
  
-    width:120px;
+    width:100px;
     .sidebar__logo{
       display:none;
     }
   }
    @media (max-width:375px ) {
     height:815px;
+  }
+  @media (max-width:360px ) {
+    width:80px;
   }
 .sidebar {
    
@@ -141,6 +144,19 @@ background-color: rgba(4,4,4,0.1);
          padding:2rem 2rem;
           
         }
+        }
+        @media (max-width:360px ) { 
+          .sidebar{
+            margin-top:-100px; 
+          }        
+          .sidebar__menu__item{
+         padding:1.8rem 1.8rem;
+          
+        }
+        div.sidebar__logo {
+        margin-bottom:-30px;
+        }
+        
         }
     }
 }

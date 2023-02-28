@@ -18,20 +18,6 @@ import { AuthContext } from '../../context/Auth';
 
 
 let data = ''
-// const data = [
-//     { name: 'JAN', CONCLUIDO: 2400, ANDAMENTO: 2400 },
-//     { name: 'FEV', CONCLUIDO: 1398, ANDAMENTO: 2210 },
-//     { name: 'MAR', CONCLUIDO: 9800, ANDAMENTO: 2290 },
-//     { name: 'ABR', CONCLUIDO: 3908, ANDAMENTO: 2000 },
-//     { name: 'MAI', CONCLUIDO: 4800, ANDAMENTO: 2181 },
-//     { name: 'JUN', CONCLUIDO: 3800, ANDAMENTO: 2500 },
-//     { name: 'JUL', CONCLUIDO: 4300, ANDAMENTO: 2100 },
-//     { name: 'AGO', CONCLUIDO: 4300, ANDAMENTO: 2100 },
-//     { name: 'SET', CONCLUIDO: 4300, ANDAMENTO: 2100 },
-//     { name: 'OUT', CONCLUIDO: 4300, ANDAMENTO: 2100 },
-//     { name: 'NOV', CONCLUIDO: 4300, ANDAMENTO: 2100 },
-//     { name: 'DEZ', CONCLUIDO: 4300, ANDAMENTO: 2100 },
-// ];
 
 const ComposeGraphics = () => {
     const { user } = useContext(AuthContext);
@@ -72,7 +58,8 @@ const ComposeGraphics = () => {
             })
         ]
     )
-
+        const tela =window.screen.width;
+        console.log(tela)
     return (
         <S.DivGrafico>
 

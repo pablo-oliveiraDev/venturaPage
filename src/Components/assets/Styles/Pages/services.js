@@ -15,7 +15,11 @@ export const Container = styled.div`
 `;
 export const ItensTitulo = styled.div`
     margin-top:10px;
-    margin-bottom:0;       
+    margin-bottom:0; 
+    @media(max-width:360px){
+        margin-top:0;
+        margin-bottom:10px;
+    }      
 `;
 
 export const Itens = styled.div`
@@ -166,45 +170,67 @@ label span {
             display:flex;
             flex-direction:column;
             justify-content:space-around;
+            align-items:flex-start;
             flex-wrap:nowrap;
-           margin-top:-200px;
-            //margin-bottom:20px;
+           margin-top:110px;
+           margin-left:20px;
+            
 
         }
         label{
-            margin-top:15px;
+            margin-top:5px;
             flex-direction:column;
             margin-bottom:20px;
         }
         label span{
-             margin-top:-700px;
+             margin-top:50px;
             flex-direction:column;
             margin-bottom:10px;
              
         }
         .itensServices  label{
-            margin-top:15px;
+            position:relative;
+            top:0px;
+           
             flex-direction:column;
             
+        }
+        .itenDescricao{
+            margin-top:-70px;
+            margin-left:-15px;
+            justify-content:flex-start;
+            align-items:flex-start;
         }
     }
     div .boxButtons{
         width:250px !important;
-              margin-top:00px;      
+              margin-top:0px;      
           flex-direction:row !important;
-           position:static;
-           top:500px;
+           position:relative;
+           top:180px;
         }
+        
 }
  @media(max-width:375px){
   margin-top:-700px;
   height:480px;
   }
  @media(max-width:360px){
-  margin-top:-850px;
-  height:300px;
+  margin-top:-370px;
+  margin-left:90px;
+  height:400px;
+  width:275px;
+  div{
+    .itensServices{
+        
+    }
+    
   }
-  
+   div .boxButtons{
+    position:relative;
+    top:195px;
+   }
+  } 
   `;
 export const Status = styled.label`
     z-index:2;
@@ -226,13 +252,12 @@ export const Status = styled.label`
 }
 
     @media(max-width:414px){
-        position:inherit;
-        bottom:-300px;
+        position:relative;
+        margin-bottom:50px;
         
          .status {   
-        position:static;
-        bottom:-300px;         
-            //margin-top:100px; 
+              position:relative;  
+            margin-bottom:-300px; 
          }
       
     }

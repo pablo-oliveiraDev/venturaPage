@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
      @media(max-width:1024px){
       height:800px;
      }
+      @media(max-width:360px){
+          overflow:hidden !important;
+     
+     }
    }
 `;
 export default GlobalStyle;

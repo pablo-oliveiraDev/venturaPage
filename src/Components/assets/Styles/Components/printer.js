@@ -10,7 +10,7 @@ h3 .tpService{
     flex-direction: column;
     text-align: center;
     margin: 30px;
-    
+   
 }
 `;
     
