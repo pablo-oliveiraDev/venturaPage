@@ -7,7 +7,14 @@ export const Container = styled.div`
     justify-content: center;
     align-items:center;
     flex-direction: column;
- 
+     @media (max-width:360px ) { 
+        height: 400px;
+        .titulo{
+         margin-top:50px;
+         margin-bottom:-30px;
+        }
+     }
+
     @media (max-width:414px ) {     
         width:200px;
     
@@ -216,7 +223,7 @@ label span {
   height:480px;
   }
  @media(max-width:360px){
-  margin-top:-370px;
+  margin-top:0px;
   margin-left:90px;
   height:400px;
   width:275px;

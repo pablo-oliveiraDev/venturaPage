@@ -16,11 +16,11 @@ background-color: rgba(4,4,4,0.1);
     height:600px;
   }
    
-  @media (max-width:414px ) {
+  @media (max-width:412px ) {
  
     width:100px;
     .sidebar__logo{
-      display:none;
+      margin-bottom:0rem;
     }
   }
    @media (max-width:375px ) {
@@ -49,6 +49,38 @@ background-color: rgba(4,4,4,0.1);
         font-weight: 700;
         font-family: 'Mochiy Pop P one', sans-serif;
         margin-bottom:3rem;
+        span{
+          display:none;
+        }
+        @media (max-width:688px) {
+          margin-bottom:0rem;
+           i{
+            display:none;
+          }          
+          span{
+            display:flex;
+          } 
+        }        
+         @media (max-width:412px) {
+           margin-bottom:0rem;
+           i{
+            display:none;
+          }          
+          span{
+            display:flex;
+          }         
+         }
+        @media (max-width:360px) { 
+          margin-bottom:0rem;
+          i{
+            display:none;
+          }          
+          span{
+            display:flex;
+          }         
+          
+         
+        }
     }
 
     &__menu {
@@ -77,9 +109,10 @@ background-color: rgba(4,4,4,0.1);
 
             &__icon {
                 margin-right: 1rem;
-
+                 margin-bottom:5px;
                 i {
                     font-size: 1.75rem;
+                   
                 }
             }
         }
@@ -102,7 +135,7 @@ background-color: rgba(4,4,4,0.1);
           }
           
           .sidebar__menu{
-          display: none;
+          
           }
           .sidebar__menu__item__icon{
           margin:2px;
@@ -114,7 +147,7 @@ background-color: rgba(4,4,4,0.1);
           
           }
           .sidebar__menu__item__text {
-            display: none;
+            display:none;
           }
           .sidebar__menu__indicator{
             width: calc(120% - 30px);
@@ -127,7 +160,7 @@ background-color: rgba(4,4,4,0.1);
             width: calc(120% - 25px);                       
           }
         }
-         @media (max-width:414px ) {
+         @media (max-width:412px ) {
           
           
           .sidebar__menu__indicator{            
@@ -145,16 +178,17 @@ background-color: rgba(4,4,4,0.1);
           
         }
         }
-        @media (max-width:360px ) { 
+        @media (max-width:360px) { 
           .sidebar{
-            margin-top:-100px; 
+            margin-top:-200px; 
+            
           }        
           .sidebar__menu__item{
          padding:1.8rem 1.8rem;
           
         }
-        div.sidebar__logo {
-        margin-bottom:-30px;
+        .sidebar__logo {
+        margin-bottom:0px;
         }
         
         }

@@ -10,27 +10,27 @@ import { AuthContext } from '../../context/Auth';
 const sidebarNavItems = [
     {
         display: 'Home',
-        icon: <i className='bx bx-home'><IconsMenu.TbHome size={20} /></i>,
+        icon: <i className='bx bx-home'><IconsMenu.TbHome size={30} /></i>,
         to: '/',
         section: ''
     },
     {
         display: 'Dashboard',
-        icon: <i className='bx bx-star'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        icon: <i className='bx bx-star'><IconsMenu.TbLayoutDashboard size={30} /></i>,
         num: 2,
         to: '/Dashboard',
         section: 'Dashboard'
     },
     {
         display: 'Serviços',
-        icon: <i className='bx bx-calendar'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        icon: <i className='bx bx-calendar'><IconsMenu.TbShoppingCartPlus size={30} /></i>,
         num: 3,
         to: '/services',
         section: 'services'
     },
     {
         display: <CadastroModal tituloButton={'Cadastro'} />,
-        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        icon: <i className='bx bx-receipt'><CadastroModal tituloButton={<IconsMenu.TbListCheck size={30} />} /></i>,
 
         section: '/cadastro',
         new: 5,
@@ -38,7 +38,7 @@ const sidebarNavItems = [
     },
     {
         display: <LoginModal tituloButton={'Login'} />,
-        icon: <i className='bx bx-receipt'><IconsMenu.TbLayoutDashboard size={20} /></i>,
+        icon: <i className='bx bx-receipt'  ><LoginModal tituloButton={<IconsMenu.TbDoorEnter size={30} />} /></i>,
 
         section: 'login'
     },
@@ -74,7 +74,7 @@ const Sidebar = () => {
         <S.MySideMenu className='sidebar'>
 
             <div className="sidebar__logo">
-                MENU
+                <span><IconsMenu.TbMenu2 size={25} /></span><i>MENU</i>
             </div>
             <div ref={sidebarRef} className="sidebar__menu">
                 <div

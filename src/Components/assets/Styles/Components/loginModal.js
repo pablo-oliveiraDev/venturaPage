@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 
+
+
 export const MyButton = styled(Button)`
     
      .btn-save,
@@ -39,7 +41,9 @@ export const ShowButton = styled.button`
     color:${props => props.active ? '#308efe' : '#555555'};
     transition: color 0.3s ease-in-out;            
     
-     
+     @media(max-width:360px){
+        
+     }
     
 `;
 

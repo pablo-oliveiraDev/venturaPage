@@ -20,4 +20,12 @@ export const MyMain = styled.div`
         float:left;
        
     }
+    @media(max-width: 688px){
+         overflow:hidden;
+    }
+    @media(max-width: 360px){
+        height:500px;
+        overflow:hidden;
+        
+    }
 `;

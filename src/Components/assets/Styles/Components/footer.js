@@ -78,6 +78,10 @@ export const MyNavbar = styled(Navbar)`
       font-size:30px;
     }
   }
+  @media(max-width:360px){
+      
+  }
+
   @media(max-width:414px){
     flex-direction: column;
     span .spanNome {

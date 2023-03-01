@@ -12,13 +12,14 @@ export default function LoginModal({ showCadastro, tituloButton }) {
     const [email, setEmail] = useState('');
     const [senha, setsenha] = useState('');
     const [active, setActive] = useState(false);
-    const { login, signed } = useContext(AuthContext);
+    const { login, signed, logOut } = useContext(AuthContext);
+
 
     const handleShow = () => {
         setShow(true);
         setActive(true);
-        
-        
+
+
     };
 
     const handleClose = () => {
@@ -26,7 +27,7 @@ export default function LoginModal({ showCadastro, tituloButton }) {
         setEmail('');
         setsenha('');
         setActive(false);
-
+        toast.info('Login cancelado😥!')
 
     };
     const clickToLogin = (e) => {
@@ -94,11 +95,14 @@ export default function LoginModal({ showCadastro, tituloButton }) {
 
                 </S.MyModal.Body>
                 <S.MyModal.Footer className='Footer'>
-                    <S.MyButton className='btn-fechar' variant="secondary" onClick={handleClose}>
-                        SAIR
+                    <S.MyButton className='btn-save' variant="danger" onClick={logOut}>
+                        LOGOUT
                     </S.MyButton>
                     <S.MyButton className='btn-save' variant="primary" onClick={clickToLogin}>
                         ENTRAR
+                    </S.MyButton>
+                    <S.MyButton className='btn-fechar' variant="secondary" onClick={handleClose}>
+                        CANCELAR
                     </S.MyButton>
                 </S.MyModal.Footer>
             </S.MyModal>
