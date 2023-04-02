@@ -10,10 +10,11 @@ import {
     ComposedChart,
     Area,
     Bar,
-   
+
 } from 'recharts';
 import { ServicesContext } from '../../context/Services';
 import { AuthContext } from '../../context/Auth';
+
 
 
 
@@ -22,12 +23,15 @@ let data = ''
 const ComposeGraphics = () => {
     const { user } = useContext(AuthContext);
     const { service, allServices, loadServiceByIdCliente } = useContext(ServicesContext);
+    
     loadServiceByIdCliente(user.id, user.nome);
+    
 
     let countConcluido = 0;
     let countAndamento = 0;
     let countAberto = 0;
     let countCancelado = 0;
+    
     if (user.uf === 'ADM') {
 
         data = [
@@ -58,12 +62,27 @@ const ComposeGraphics = () => {
             })
         ]
     )
-        const tela =window.screen.width;
-        console.log(tela)
+    const tela = window.screen.width;
+    
+    if (tela < 1024) {
+        return <div >
+            <h1 className='tituloRel'>Relatorio</h1>
+            <S.FormClientes className='formClientes'style={{display:'flex', flexDirection:'column'}}>
+                {user.uf === 'ADM' && (<label>Clientes cadastrados: <span className='qntdClientes'>{user.nome.length}</span></label>)}
+                <label>Pedidos concluidos: <span className='qntdClientes'>{countConcluido}</span></label>
+                <label>Pedidos em andamento: <span className='qntdClientes'>{countAndamento}</span></label>
+                <label>Pedidos cancelados: <span className='qntdClientes'>{countCancelado}</span></label>
+
+
+            </S.FormClientes>
+        </div>
+    }
+
     return (
         <S.DivGrafico>
 
             <h1 style={{ margin: '20px' }}>Serviços</h1>
+            <h3> <label>Clientes cadastrados: <span className='qntdClientes'>{user.nome.length}</span></label></h3>
 
             <ComposedChart
                 width={730} height={250}

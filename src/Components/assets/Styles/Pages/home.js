@@ -20,6 +20,12 @@ export const MyContainer = styled('div')`
         }
         
       }
+       @media(max-width:375px){
+            .titulo {
+                
+                margin-top:50px;
+            }
+       }
        @media(max-width:360px){
         .titulo {
             margin-top:50px;
@@ -50,17 +56,35 @@ export const MyCarousel = styled(Carousel)`
         .imgItem{
             height:300px;
         }
+        .caption{
+            font-size:14px;
+            height:80px;
+        }
+        h3{
+            display:none;
+        }
+    }
+
+    @media(max-height:667px){
+            .imgItem{
+            height:250px;
+        }
+        .caption{
+            font-size:14px;
+            height:80px;
+        }
+        h3{
+            display:none;
+        }
      }
+     
      @media(max-width:375px){
         .imgItem{
             height:300px;
         }
-         @media(max-height:667px){
-            .imgItem{
-            height:250px;
-        }
-         }
+        
     }
+      
 `;
-  
+
 

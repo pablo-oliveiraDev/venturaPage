@@ -27,7 +27,7 @@ export default function LoginModal({ showCadastro, tituloButton }) {
         setEmail('');
         setsenha('');
         setActive(false);
-        toast.info('Login cancelado😥!')
+        //toast.info('Login cancelado😥!')
 
     };
     const clickToLogin = (e) => {
@@ -51,6 +51,12 @@ export default function LoginModal({ showCadastro, tituloButton }) {
         }
 
     }
+    const cancelarButton = (e) => {
+        e.preventDefault();
+        toast.info('Login cancelado😥!');
+        handleClose();
+
+    };
 
 
 
@@ -98,10 +104,10 @@ export default function LoginModal({ showCadastro, tituloButton }) {
                     <S.MyButton className='btn-save' variant="danger" onClick={logOut}>
                         LOGOUT
                     </S.MyButton>
-                    <S.MyButton className='btn-save' variant="primary" onClick={clickToLogin}>
+                    {!signed && <S.MyButton className='btn-save' variant="primary" onClick={clickToLogin}>
                         ENTRAR
-                    </S.MyButton>
-                    <S.MyButton className='btn-fechar' variant="secondary" onClick={handleClose}>
+                    </S.MyButton>}
+                    <S.MyButton className='btn-fechar' variant="secondary" onClick={cancelarButton}>
                         CANCELAR
                     </S.MyButton>
                 </S.MyModal.Footer>

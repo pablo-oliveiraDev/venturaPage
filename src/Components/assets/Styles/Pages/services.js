@@ -84,6 +84,7 @@ export const MyScrool = styled.div`
   overflow-y: scroll;
   position: relative;
   scroll-behavior: auto;
+  overflow-x: hidden;
   
   position:relative;
  
@@ -219,8 +220,10 @@ label span {
         
 }
  @media(max-width:375px){
-  margin-top:-700px;
+  margin-top:-200px;
   height:480px;
+  margin-left:100px;
+  width:280px;
   }
  @media(max-width:360px){
   margin-top:0px;

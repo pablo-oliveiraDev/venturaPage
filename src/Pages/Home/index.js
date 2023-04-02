@@ -20,7 +20,7 @@ export default function Home() {
               src={ImgHome1}
               alt="Instalação de ar"
             />
-            <S.MyCarousel.Caption>
+            <S.MyCarousel.Caption className='caption'>
               <h3>Instalação de ar</h3>
               <p>Instalação de qualidade para seu ar esta sempre gelando!</p>
             </S.MyCarousel.Caption>
@@ -32,7 +32,7 @@ export default function Home() {
               alt="Manutenção"
             />
 
-            <S.MyCarousel.Caption>
+            <S.MyCarousel.Caption className='caption'>
               <h3>Manutenção</h3>
               <p>Manutenção de qualidade com ótimos preços</p>
             </S.MyCarousel.Caption>
